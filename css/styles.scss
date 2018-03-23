@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+$navy-blue: hsl(236, 89%, 14%);
+$white: hsl(236, 89%, 90%);
+
+body {
+    display: grid;
+    grid-template-rows: 20vh minmax(300px, 60vh) 20vh;
+    grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
+    background: radial-gradient(lighten($navy-blue, 20), $navy-blue);
+    font-family: 'Lato', sans-serif;
+}
+
+.login-box {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: $white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 15%;
+    }
+
+    input, label {
+        margin-bottom: 10px;
+    }
+
+    button {
+        background-color: lighten($navy-blue, 50);
+        width: 50%;
+        color: $white;
+        border-radius: 5px;
+        border: 2px solid lighten($navy-blue, 40);
+        margin: 10px auto;
+        padding: 10px;
+        transition: 0.5s background-color;
+
+        &:hover {
+            background-color: lighten($navy-blue, 60);
+            cursor: pointer;
+        }
+    }
+}
