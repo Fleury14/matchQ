@@ -5,7 +5,7 @@ $white: hsl(236, 89%, 90%);
 
 body {
     display: grid;
-    grid-template-rows: 20vh minmax(300px, 60vh) 20vh;
+    grid-template-rows: 20vh minmax(250px, 60vh) 20vh;
     grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
     background: radial-gradient(lighten($navy-blue, 20), $navy-blue);
     font-family: 'Lato', sans-serif;
@@ -51,4 +51,13 @@ body {
             cursor: pointer;
         }
     }
+}
+
+.copy {
+    color: $white;
+    font-size: 10px;
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    align-self: center;
+    justify-self: center;
 }

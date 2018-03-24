@@ -1,11 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 body {
   display: grid;
-  grid-template-rows: 50px 200px 100px repeat(5, 50px);
+  grid-template-rows: 50px 200px 100px repeat(5, 60px);
   grid-template-columns: 10% 35% 10% 35% 10%;
   height: 100vh;
   background: linear-gradient(#010213, #040843);
   font-family: 'Lato', sans-serif;
+  color: #ecedfe;
+}
+
+.success-text {
+  color: #0a6b0a;
+  font-style: normal;
+}
+
+.danger-text {
+  color: #6d1809;
+  font-style: normal;
 }
 
 nav {
@@ -19,6 +30,16 @@ nav {
 
 nav ul {
   list-style: none;
+  display: flex;
+  justify-content: space-around;
+  transition: 1s all;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+nav .faded {
+  transform: translate(0, -20px);
+  opacity: 0;
 }
 
 header {
@@ -30,5 +51,59 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.queue-owned {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.queue-subscribed {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  height: 95%;
+  background-color: #ecedfe;
+  color: #040843;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #d4d6fc;
+  transition: 0.25s;
+}
+
+.card:hover {
+  background-color: #d4d6fc;
+  cursor: pointer;
+}
+
+.card p {
+  margin: 5px;
+}
+
+.card .info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8em;
+  margin: 10px 10px 0 10px;
+}
+
+.owned-card {
+  grid-column: 2 / 3;
+  align-self: center;
+}
+
+.subscribed-card {
+  grid-column: 4 / 5;
+}
+
+.card0 {
+  grid-row: 4 / 5;
 }
 /*# sourceMappingURL=dashboard.css.map */

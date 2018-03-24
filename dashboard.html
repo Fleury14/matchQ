@@ -10,8 +10,11 @@
 <body>
     <nav>
         <div class="nav-bar">
-            <ul>
+            <ul class="faded">
                 <li>Logout</li>
+                <li>Active Streams: 1</li>
+                <li>Invites: 1</li>
+                <li>Credits</li>
             </ul>
         </div>
     </nav>
@@ -20,8 +23,28 @@
             <h1>MatchQ</h1>
         </div>
     </header>
-        <div class="sub-header"></div>
-
-    
+    <div class="queue-owned">
+        <h3>Queues you own</h3>
+    </div>
+     <!-- Begin  left card list -->
+     <div class="card owned-card card0">
+        <p>JardCon 2018</p>
+        <div class="info-row">
+            <span>Active: <i class="danger-text">No</i></span>
+            <span>Subscribers: 5</span>
+        </div>
+    </div>
+    <div class="queue-subscribed">
+        <h3>Queues you're subscribed to</h3>
+    </div>
+    <!-- Begin right card list -->
+    <div class="card subscribed-card card0">
+        <p>CenCal Standoff</p>
+        <div class="info-row">
+            <span>Active: <i class="success-text">Yes</i></span>
+            <span>Owner: FresnoGaming</span>
+        </div>
+    </div>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 body {
   display: grid;
-  grid-template-rows: 20vh minmax(300px, 60vh) 20vh;
+  grid-template-rows: 20vh minmax(250px, 60vh) 20vh;
   grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
   background: radial-gradient(#0a14a4, #040843);
   font-family: 'Lato', sans-serif;
@@ -48,5 +48,14 @@ body {
 .login-box button:hover {
   background-color: #828af8;
   cursor: pointer;
+}
+
+.copy {
+  color: #cfd2fc;
+  font-size: 10px;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  align-self: center;
+  justify-self: center;
 }
 /*# sourceMappingURL=styles.css.map */
