@@ -1,4 +1,5 @@
 $navy-blue: hsl(236, 89%, 14%);
+$white: hsl(236, 89%, 96%);
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 
@@ -8,7 +9,8 @@ body {
     grid-template-rows: 50px 200px 100px repeat(5,50px);
     grid-template-columns: 10% 35% 10% 35% 10%;
     height: 100vh;
-    background: linear-gradient(darken($navy-blue, 10), $navy-blue)
+    background: linear-gradient(darken($navy-blue, 10), $navy-blue);
+    font-family: 'Lato', sans-serif;
 }
 
 nav {
@@ -17,4 +19,22 @@ nav {
     grid-row-start: 1;
     grid-row-end: 1;
     background-color: transparent;
+    color: $white;
+
+    ul {
+        list-style: none;
+    }
+
+}
+
+header {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
