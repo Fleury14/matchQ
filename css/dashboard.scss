@@ -11,6 +11,7 @@ body {
     display: grid;
     grid-template-rows: 50px 200px 100px repeat(5,60px);
     grid-template-columns: 10% 35% 10% 35% 10%;
+    grid-row-gap: 10px;
     height: 100vh;
     background: linear-gradient(darken($navy-blue, 10), $navy-blue);
     font-family: 'Lato', sans-serif;
@@ -86,7 +87,9 @@ header {
     color: $navy-blue;
     border-radius: 10px;
     box-shadow: 0px 0px 10px darken($white, 5);
-    transition: 0.25s;
+    transform: translate(0, 0);
+    transition: background-color 0.25s, transform 0.75s, opacity 0.55s;
+    opacity: 1;
 
     &:hover {
         background-color: darken($white, 5);
@@ -110,10 +113,28 @@ header {
     align-self: center;
 }
 
+.owned-fade {
+    transform: translate(-20px, 0);
+    opacity: 0;
+}
+
 .subscribed-card {
     grid-column: 4 / 5;
 }
 
+.sub-fade {
+    transform: translate(20px, 0);
+    opacity: 0;
+}
+
 .card0 {
     grid-row: 4 / 5;
+}
+
+.card1 {
+    grid-row: 5 / 6;
+}
+
+.card2 {
+    grid-row: 6 / 7;
 }
