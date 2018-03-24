@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+body {
+  display: grid;
+  grid-template-rows: 50px 200px 100px repeat(5, 50px);
+  grid-template-columns: 10% 35% 10% 35% 10%;
+  height: 100vh;
+  background: linear-gradient(#010213, #040843);
+}
+
+nav {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: transparent;
+}
+/*# sourceMappingURL=dashboard.css.map */

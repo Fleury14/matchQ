@@ -1,0 +1,20 @@
+$navy-blue: hsl(236, 89%, 14%);
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+
+
+body {
+    display: grid;
+    grid-template-rows: 50px 200px 100px repeat(5,50px);
+    grid-template-columns: 10% 35% 10% 35% 10%;
+    height: 100vh;
+    background: linear-gradient(darken($navy-blue, 10), $navy-blue)
+}
+
+nav {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: transparent;
+}
