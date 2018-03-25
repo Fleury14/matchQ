@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const navbar = document.querySelector('.nav-bar ul');
 const cards = document.getElementsByClassName('card');
 
