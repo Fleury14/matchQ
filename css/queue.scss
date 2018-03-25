@@ -1,0 +1,87 @@
+@import 'utilities/vars';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+
+body {
+    display: grid;
+    grid-template-rows: 50px 200px repeat(8, 75px);
+    grid-template-columns: 200px 1fr 6fr 1fr;
+    grid-row-gap: 10px;
+    background: linear-gradient(darken($navy-blue, 10), $navy-blue);
+    font-family: 'Lato', sans-serif;
+    color: $white;
+    min-height: 100vh;
+}
+
+nav {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: transparent;
+    color: $white;
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        transition: 1s all;
+        transform: translate(0, 0);
+        opacity: 1;
+
+        li {
+            color: $white;
+            transition: 0.5s color;
+        }
+
+        li:hover {
+            color: $highlight;
+            cursor: pointer;
+        }
+
+    }
+
+    .faded {
+        transform: translate(0, -20px);
+        opacity: 0
+    }
+
+}
+
+header {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+aside {
+    grid-column: 1 / 2;
+    grid-row: 2 / 11;
+    background: linear-gradient(to bottom right, darken($white, 10), darken($white, 5));
+    color: $navy-blue;
+
+    ul {
+        list-style: none;
+        margin-top: 50px;
+        padding: 0;
+        text-indent: 10px;
+
+        li {
+            margin-bottom: 10px;
+            transition: 0.25s all;
+            padding: 5px;
+
+        }
+
+        li:hover {
+            background-color: darken($white, 15);
+            text-indent: 15px;
+        }
+    }
+}
