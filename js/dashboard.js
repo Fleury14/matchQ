@@ -8,10 +8,6 @@ window.onload = function() {
             cards[i].classList.remove('owned-fade');
             cards[i].classList.remove('sub-fade');    
     }
-    // cards.forEach( card => {
-    //     card.classList.remove('owned-fade');
-    //     card.classList.remove('sub-fade');
-    // } );
     
     
 };
