@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+.success {
+  color: #0a6b0a;
+}
+
+.danger {
+  color: #6d1809;
+}
+
 body {
   display: grid;
   grid-template-rows: 50px 200px repeat(8, 75px);
@@ -61,6 +69,11 @@ aside {
   color: #040843;
 }
 
+aside a {
+  text-decoration: none;
+  color: inherit;
+}
+
 aside ul {
   list-style: none;
   margin-top: 50px;
@@ -77,5 +90,134 @@ aside ul li {
 aside ul li:hover {
   background-color: #a3a9fa;
   text-indent: 15px;
+}
+
+main {
+  grid-column: 3 / 4;
+  grid-row: 3 / span 4;
+  box-shadow: 0px 0px 160px #0a14a4;
+}
+
+main .queue-card {
+  background-color: #ecedfe;
+  height: 75px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 2fr 6fr 3fr;
+}
+
+main .queue-card .status {
+  grid-column: 1 / 2;
+  background-color: #515cf5;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+main .queue-card .matchup {
+  grid-column: 2 / 3;
+  color: #040843;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+main .queue-card .matchup h3 {
+  width: 100%;
+}
+
+main .queue-card .matchup span {
+  font-weight: 200;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+main .queue-card .buttons {
+  grid-column: 3 / 4;
+  color: #040843;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2em;
+}
+
+section {
+  grid-column: 3 / 4;
+  grid-row: 7 / 9;
+  border: 2px solid #ecedfe;
+  border-radius: 10px;
+  padding: 20px 50px;
+  text-align: center;
+  transition: 0.5s all;
+  overflow: hidden;
+  height: 160px;
+}
+
+section:hover h3 {
+  color: #e7d808;
+}
+
+section:hover {
+  border: 2px solid #e7d808;
+}
+
+section h3 {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+section label {
+  margin: 50px 20px;
+}
+
+section button {
+  margin-top: 15px;
+  padding: 5px 50px;
+  background-color: #212ff2;
+  color: #ecedfe;
+  border-radius: 5px;
+  border: 1px solid #ecedfe;
+  transition: all .5s;
+}
+
+section button:hover {
+  background-color: #828af8;
+}
+
+.close-add-match {
+  height: 50px;
+  padding: 20px 0px 0px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    grid-template-rows: 50px 100px 200px repeat(8, 75px);
+    grid-template-columns: 100%;
+  }
+  header {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  aside {
+    grid-row: 3 / 4;
+    width: 100%;
+  }
+  main {
+    grid-row: 4 / span 7;
+    grid-column: 1 / 2;
+  }
+  main .queue-card {
+    height: 100px;
+  }
+  section {
+    grid-row: 9 / 12;
+    grid-column: 1 / 2;
+    margin-top: 20px;
+  }
 }
 /*# sourceMappingURL=queue.css.map */
