@@ -64,6 +64,31 @@ main {
     color: $navy-blue;
     box-shadow: 0px 0px 20px lighten($white, 10);
 
+    i {
+        font-size: 2em;
+        margin-right: 20px;
+        position: relative;
+        bottom: 10px;
+    }
+
+    .finish-button {
+        color: darken($success, 10);
+        transition: 0.25s all;
+
+        &:hover {
+            color: lighten($success, 10);
+        }
+    }
+
+    .delete-button {
+        color: darken($danger, 10);
+        transition: 0.25s all;
+
+        &:hover {
+            color: lighten($danger, 10);
+        }
+    }
+
     h4 {
         grid-row: 1 / 2;
         grid-column: 2 / 3;
