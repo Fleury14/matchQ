@@ -125,7 +125,12 @@ main {
     grid-column: 3 / 4;
     grid-row: 3 / span 4;
     box-shadow: 0px 0px 160px lighten($navy-blue, 20);
+    background: radial-gradient($navy-blue, lighten($navy-blue, 10));
 
+    ul {
+        padding: 0;
+        margin: 0;
+    }
 
     .queue-card {
         background-color: $white;
@@ -171,10 +176,28 @@ main {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            font-size: 2em;
+            font-size: 1em;
 
         }
         
+        .finish-button {
+            color: darken($success, 10);
+            transition: 0.25s all;
+
+            &:hover {
+                color: lighten($success, 10);
+            }
+        }
+
+        .delete-button {
+            color: darken($danger, 10);
+            transition: 0.25s all;
+
+            &:hover {
+                color: lighten($danger, 10);
+            }
+        }
+
     }
 }
 

@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 .success {
-  color: #0a6b0a;
+  color: #08bf08;
 }
 
 .danger {
-  color: #6d1809;
+  color: #d32709;
 }
 
 body {
@@ -118,6 +118,12 @@ main {
   grid-column: 3 / 4;
   grid-row: 3 / span 4;
   box-shadow: 0px 0px 160px #0a14a4;
+  background: radial-gradient(#040843, #070e74);
+}
+
+main ul {
+  padding: 0;
+  margin: 0;
 }
 
 main .queue-card {
@@ -165,7 +171,25 @@ main .queue-card .buttons {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 2em;
+  font-size: 1em;
+}
+
+main .queue-card .finish-button {
+  color: #068e06;
+  transition: 0.25s all;
+}
+
+main .queue-card .finish-button:hover {
+  color: #0af00a;
+}
+
+main .queue-card .delete-button {
+  color: #a21e07;
+  transition: 0.25s all;
+}
+
+main .queue-card .delete-button:hover {
+  color: #f53a19;
 }
 
 section {

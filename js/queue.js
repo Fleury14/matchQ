@@ -5,6 +5,7 @@ const section = document.querySelector('section');
 const activeButton = document.getElementById('activeToggle');
 const activeStatus = document.getElementById('activeStatus');
 let isActive = true;
+const sortable = document.getElementById('sortable');
 
 function toggleHeight() {
     section.classList.toggle('close-add-match');
@@ -36,6 +37,39 @@ function toggleActive() {
         isActive = true;
     }
 }
+
+function drag(event) {
+    console.log(event);
+    event.dataTransfer.getData('text', event.target.id);
+}
+
+function drop(event) {
+    console.log(event);
+}
+
+function updateText() {
+    for (i = 1; i < 5; i++) {
+        if (i === 1) {
+            document.querySelector(`#sortable li:nth-child(${i}) .status-text`).innerHTML = "<strong>On Stream</strong>";
+        } else if (i === 2) {
+            document.querySelector(`#sortable li:nth-child(${i}) .status-text`).innerHTML = "On Deck";
+        } else {
+            document.querySelector(`#sortable li:nth-child(${i}) .status-text`).innerHTML = `#${i}`;
+        }
+    }
+}
+
+$( function() {
+    $( "#sortable" ).sortable({
+        update: function( event, ui ) {
+            // console.log('event', event, ui);
+            // console.log(sortable);
+            console.log(document.querySelector('#sortable li:nth-child(1) .status-text'));
+            updateText();
+        }
+      });
+    $( "#sortable" ).disableSelection();
+  } );
 
 section.addEventListener('click', toggleHeight);
 activeButton.addEventListener('click', toggleActive);

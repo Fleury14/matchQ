@@ -1,16 +1,11 @@
-$navy-blue: hsl(236, 89%, 14%);
-$white: hsl(236, 89%, 96%);
-$success: hsl(120, 83%, 23%);
-$danger: hsl(9, 85%, 23%);
-$highlight: hsl(56, 93%, 47%);
-
+@import 'utilities/vars';
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 
 
 body {
     display: grid;
-    grid-template-rows: 50px 200px 240px 75px 150px;
+    grid-template-rows: 50px 200px 320px 75px 150px;
     grid-template-columns: 10% 35% 10% 35% 10%;
     grid-row-gap: 10px;
     background: linear-gradient(darken($navy-blue, 10), $navy-blue);
@@ -112,6 +107,7 @@ header {
     height: 95%;
     margin-bottom: 20px;
     // border: 1px solid $navy-blue;
+    padding: 10px 0px;
     background-color: $white;
     color: $navy-blue;
     border-radius: 10px;
@@ -213,38 +209,39 @@ header {
         min-width: 100%;
         max-width: 500px;
         margin: 0 auto;
+        background-color: lighten($navy-blue, 10);
     }
 
     button:hover {
         cursor: pointer;
-        transform: translateY(-2px);
+        background-color: lighten($navy-blue, 20);
     }
 
     .btn1, .btn2, .btn3 {
         margin-top: 10px;
     }
 
-    .btn0 {
-        background: linear-gradient($navy-blue, lighten($navy-blue, 5));
-    }
+    // .btn0 {
+    //     background: linear-gradient($navy-blue, lighten($navy-blue, 5));
+    // }
 
-    .btn1 {
-        background: linear-gradient(lighten($navy-blue, 5), lighten($navy-blue, 10));
-    }
+    // .btn1 {
+    //     background: linear-gradient(lighten($navy-blue, 5), lighten($navy-blue, 10));
+    // }
 
-    .btn2 {
-        background: linear-gradient(lighten($navy-blue, 10), lighten($navy-blue, 15));
-    }
+    // .btn2 {
+    //     background: linear-gradient(lighten($navy-blue, 10), lighten($navy-blue, 15));
+    // }
 
-    .btn3 {
-        background: linear-gradient(lighten($navy-blue, 15), lighten($navy-blue, 20));
-    }
+    // .btn3 {
+    //     background: linear-gradient(lighten($navy-blue, 15), lighten($navy-blue, 20));
+    // }
 }
 
 @media only screen and (max-width: 768px) {
 
     body {
-        grid-template-rows: 50px 200px 240px 240px 150px;
+        grid-template-rows: 50px 200px 320px 320px 150px;
         grid-row-gap: 30px;
     }
 

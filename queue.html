@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
     <link rel="stylesheet" href="css/queue.css">
@@ -28,69 +29,72 @@
             <a href="dashboard.html"><li><strong>Back to dashboard</strong></li></a>
             <li>Invite users</li>
             <li>Unsubscribe</li>
-            <li>Active: <span id="activeStatus" class="success">Yes</span></li>
+            <li>Active: <strong><span id="activeStatus" class="success">Yes</span></strong></li>
             <li>
                 <button id="activeToggle">Toggle Active</button>
             </li>
         </ul>
     </aside>
     <main>
-        <div class="queue-card card0">
-            <div class="status">
-                <p><strong>On stream</strong></p>
-            </div>
-            <div class="matchup">
-                <h3>Samurai <span>vs</span> Genesis_Frenzy</h3>
-            </div>
-            <div class="buttons">
-                <i class="fas fa-check-circle success"></i>
-                <i class="fas fa-arrow-circle-up"></i>
-                <i class="fas fa-arrow-circle-down"></i>
-                <i class="fas fa-times-circle danger"></i>
-            </div>
-        </div>
-        <div class="queue-card card1">
-            <div class="status">
-                <p>On deck</p>
-            </div>
-            <div class="matchup">
-                <h3>Jard <span>vs</span> Scam Lee</h3>
-            </div>
-            <div class="buttons">
-                <i class="fas fa-check-circle success"></i>
-                <i class="fas fa-arrow-circle-up"></i>
-                <i class="fas fa-arrow-circle-down"></i>
-                <i class="fas fa-times-circle danger"></i>
-            </div>
-        </div>
-        <div class="queue-card card2">
-            <div class="status">
-                <p>#3</p>
-            </div>
-            <div class="matchup">
-                <h3>Aj <span>vs</span> LPN</h3>
-            </div>
-            <div class="buttons">
-                <i class="fas fa-check-circle success"></i>
-                <i class="fas fa-arrow-circle-up"></i>
-                <i class="fas fa-arrow-circle-down"></i>
-                <i class="fas fa-times-circle danger"></i>
-            </div>
-        </div>
-        <div class="queue-card card3">
-            <div class="status">
-                <p>#4</p>
-            </div>
-            <div class="matchup">
-                <h3>El Rado <span>vs</span> Fleury14</h3>
-            </div>
-            <div class="buttons">
-                <i class="fas fa-check-circle success"></i>
-                <i class="fas fa-arrow-circle-up"></i>
-                <i class="fas fa-arrow-circle-down"></i>
-                <i class="fas fa-times-circle danger"></i>
-            </div>
-        </div>
+        <ul id="sortable">
+            <li class="queue-card" draggable="true" id="card0" ondrop="drop(event)">
+                <div class="status">
+                    <p class="status-text"><strong>On stream</strong></p>
+                </div>
+                <div class="matchup">
+                    <h3>Samurai <span>vs</span> Genesis_Frenzy</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-arrow-circle-up"></i>
+                    <i class="fas fa-arrow-circle-down"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card1">
+                <div class="status">
+                    <p class="status-text">On deck</p>
+                </div>
+                <div class="matchup">
+                    <h3>Jard <span>vs</span> Scam Lee</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-arrow-circle-up"></i>
+                    <i class="fas fa-arrow-circle-down"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card2">
+                <div class="status">
+                    <p class="status-text">#3</p>
+                </div>
+                <div class="matchup">
+                    <h3>Aj <span>vs</span> LPN</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-arrow-circle-up"></i>
+                    <i class="fas fa-arrow-circle-down"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card3">
+                <div class="status">
+                    <p class="status-text">#4</p>
+                </div>
+                <div class="matchup">
+                    <h3>El Rado <span>vs</span> Fleury14</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-arrow-circle-up"></i>
+                    <i class="fas fa-arrow-circle-down"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+        </ul>
+        
     </main>
     <section class="close-add-match">
         <h3 id="sectionh3">Add match</h3>
@@ -102,6 +106,8 @@
         <br>
         <button>Submit</button>
     </section>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/queue.js"></script>
 </body>
 </html>
