@@ -181,7 +181,7 @@ header {
   color: #ecedfe;
   border-radius: 5px;
   transition: .2s all;
-  min-width: 430px;
+  min-width: 100%;
   max-width: 500px;
   margin: 0 auto;
 }

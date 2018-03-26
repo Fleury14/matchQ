@@ -97,6 +97,23 @@ aside ul li:hover {
   text-indent: 15px;
 }
 
+aside ul span {
+  transition: 0.25s;
+}
+
+aside ul button {
+  background: linear-gradient(to right, #03052b, #050b5c);
+  color: #ecedfe;
+  border: #040843;
+  padding: 5px 10px;
+  transition: 0.25s all;
+}
+
+aside ul button:hover {
+  cursor: pointer;
+  color: #e7d808;
+}
+
 main {
   grid-column: 3 / 4;
   grid-row: 3 / span 4;

@@ -101,6 +101,23 @@ aside {
             background-color: darken($white, 15);
             text-indent: 15px;
         }
+
+        span {
+            transition: 0.25s;
+        }
+
+        button {
+            background: linear-gradient(to right, darken($navy-blue, 5), lighten($navy-blue, 5));
+            color: $white;
+            border: $navy-blue;
+            padding: 5px 10px;
+            transition: 0.25s all;
+
+            &:hover {
+                cursor: pointer;
+                color: $highlight;
+            }
+        }
     }
 }
 

@@ -1,0 +1,119 @@
+@import 'utilities/vars';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+body {
+    display: grid;
+    grid-template-rows: 50px 200px 200px 75px;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-row-gap: 10px;
+    background: linear-gradient(darken($navy-blue, 10), $navy-blue);
+    font-family: 'Lato', sans-serif;
+    color: $white;
+    min-height: 100vh;
+}
+
+nav {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: transparent;
+    color: $white;
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        transition: 1s all;
+        transform: translate(0, 0);
+        opacity: 1;
+
+        li {
+            color: $white;
+            transition: 0.5s color;
+        }
+
+        li:hover {
+            color: $highlight;
+            cursor: pointer;
+        }
+
+    }
+}
+
+header {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    background: radial-gradient($white, darken($white, 10));
+    border-radius: 10px;
+    color: $navy-blue;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+    box-shadow: 0px 0px 60px lighten($navy-blue, 20);
+    
+    label {
+        margin: 30px 0 10px 0;
+    }
+
+    input {
+        margin-bottom: 40px;
+    }
+
+    button {
+        width: 50%;
+        padding: 20px;
+        margin: 0 auto;
+        background-color: $navy-blue;
+        color: $white;
+        border-radius: 10px;
+        border: 1px solid lighten($navy-blue, 10);
+        transition: 0.25s all;
+
+        &:hover {
+            background-color: lighten($navy-blue, 10);
+            cursor: pointer;
+        }
+    }
+
+}
+
+section {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        background-color: transparent;
+        padding: 20px 50px;
+        border: 2px solid $white;
+        color: $white;
+        transition: 0.25s all;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lighten($navy-blue, 10);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    main {
+        grid-column: 1 / span 3;
+        width: inherit;
+    }
+}
