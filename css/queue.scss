@@ -47,6 +47,11 @@ nav {
             cursor: pointer;
         }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
     }
 
     .faded {
@@ -96,6 +101,23 @@ aside {
             background-color: darken($white, 15);
             text-indent: 15px;
         }
+
+        span {
+            transition: 0.25s;
+        }
+
+        button {
+            background: linear-gradient(to right, darken($navy-blue, 5), lighten($navy-blue, 5));
+            color: $white;
+            border: $navy-blue;
+            padding: 5px 10px;
+            transition: 0.25s all;
+
+            &:hover {
+                cursor: pointer;
+                color: $highlight;
+            }
+        }
     }
 }
 
@@ -103,7 +125,12 @@ main {
     grid-column: 3 / 4;
     grid-row: 3 / span 4;
     box-shadow: 0px 0px 160px lighten($navy-blue, 20);
+    background: radial-gradient($navy-blue, lighten($navy-blue, 10));
 
+    ul {
+        padding: 0;
+        margin: 0;
+    }
 
     .queue-card {
         background-color: $white;
@@ -147,12 +174,34 @@ main {
             grid-column: 3 / 4;
             color: $navy-blue;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
+            padding-right: 20px;
             align-items: center;
-            font-size: 2em;
-
+            font-size: 1em;
+ 
+            i:nth-child(2) {
+                margin-left: 20px;
+            }
         }
         
+        .finish-button {
+            color: darken($success, 10);
+            transition: 0.25s all;
+
+            &:hover {
+                color: lighten($success, 10);
+            }
+        }
+
+        .delete-button {
+            color: darken($danger, 10);
+            transition: 0.25s all;
+
+            &:hover {
+                color: lighten($danger, 10);
+            }
+        }
+
     }
 }
 
@@ -166,14 +215,29 @@ section {
     transition: 0.5s all;
     overflow: hidden;
     height: 160px;
+    position: relative;
 
-    &:hover h3 {
-        color: $highlight;
+    #add-arrow {
+        position: absolute;
+        font-size: 2em;
+        color: $white;
+        left: 5%;
+        width: 50px;
+        transition: 0.25s all;
+        transform: rotate(0deg);
+
+        &:hover {
+            color: $highlight;
+        }
     }
 
-    &:hover {
-        border: 2px solid $highlight;
-    }
+    // &:hover h3 {
+    //     color: $highlight;
+    // }
+
+    // &:hover {
+    //     border: 2px solid $highlight;
+    // }
 
     h3 {
         margin-top: 0;
@@ -184,8 +248,13 @@ section {
         margin: 50px 20px;
     }
 
+    input {
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+
     button {
-        margin-top: 15px;
+        margin-top: 10px;
         padding: 5px 50px;
         background-color: lighten($navy-blue, 40);
         color: $white;

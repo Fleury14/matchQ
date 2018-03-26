@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 .success {
-  color: #0a6b0a;
+  color: #08bf08;
 }
 
 .danger {
-  color: #6d1809;
+  color: #d32709;
 }
 
 body {
@@ -44,6 +44,11 @@ nav ul li {
 nav ul li:hover {
   color: #e7d808;
   cursor: pointer;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: inherit;
 }
 
 nav .faded {
@@ -92,10 +97,33 @@ aside ul li:hover {
   text-indent: 15px;
 }
 
+aside ul span {
+  transition: 0.25s;
+}
+
+aside ul button {
+  background: linear-gradient(to right, #03052b, #050b5c);
+  color: #ecedfe;
+  border: #040843;
+  padding: 5px 10px;
+  transition: 0.25s all;
+}
+
+aside ul button:hover {
+  cursor: pointer;
+  color: #e7d808;
+}
+
 main {
   grid-column: 3 / 4;
   grid-row: 3 / span 4;
   box-shadow: 0px 0px 160px #0a14a4;
+  background: radial-gradient(#040843, #070e74);
+}
+
+main ul {
+  padding: 0;
+  margin: 0;
 }
 
 main .queue-card {
@@ -141,9 +169,32 @@ main .queue-card .buttons {
   grid-column: 3 / 4;
   color: #040843;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  padding-right: 20px;
   align-items: center;
-  font-size: 2em;
+  font-size: 1em;
+}
+
+main .queue-card .buttons i:nth-child(2) {
+  margin-left: 20px;
+}
+
+main .queue-card .finish-button {
+  color: #068e06;
+  transition: 0.25s all;
+}
+
+main .queue-card .finish-button:hover {
+  color: #0af00a;
+}
+
+main .queue-card .delete-button {
+  color: #a21e07;
+  transition: 0.25s all;
+}
+
+main .queue-card .delete-button:hover {
+  color: #f53a19;
 }
 
 section {
@@ -156,14 +207,21 @@ section {
   transition: 0.5s all;
   overflow: hidden;
   height: 160px;
+  position: relative;
 }
 
-section:hover h3 {
+section #add-arrow {
+  position: absolute;
+  font-size: 2em;
+  color: #ecedfe;
+  left: 5%;
+  width: 50px;
+  transition: 0.25s all;
+  transform: rotate(0deg);
+}
+
+section #add-arrow:hover {
   color: #e7d808;
-}
-
-section:hover {
-  border: 2px solid #e7d808;
 }
 
 section h3 {
@@ -175,8 +233,13 @@ section label {
   margin: 50px 20px;
 }
 
+section input {
+  margin-bottom: 10px;
+  padding: 3px;
+}
+
 section button {
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 5px 50px;
   background-color: #212ff2;
   color: #ecedfe;

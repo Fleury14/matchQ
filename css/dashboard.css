@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 body {
   display: grid;
-  grid-template-rows: 50px 200px 240px 75px 150px;
+  grid-template-rows: 50px 200px 320px 75px 150px;
   grid-template-columns: 10% 35% 10% 35% 10%;
   grid-row-gap: 10px;
   background: linear-gradient(#010213, #040843);
@@ -11,12 +11,12 @@ body {
 }
 
 .success-text {
-  color: #0a6b0a;
+  color: #08bf08;
   font-style: normal;
 }
 
 .danger-text {
-  color: #6d1809;
+  color: #d32709;
   font-style: normal;
 }
 
@@ -46,6 +46,11 @@ nav ul li {
 nav ul li:hover {
   color: #e7d808;
   cursor: pointer;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: inherit;
 }
 
 nav .faded {
@@ -94,6 +99,7 @@ header {
   text-align: center;
   height: 95%;
   margin-bottom: 20px;
+  padding: 10px 0px;
   background-color: #ecedfe;
   color: #040843;
   border-radius: 10px;
@@ -146,6 +152,11 @@ header {
   margin-bottom: 20px;
 }
 
+.search-box input {
+  padding: 5px;
+  font-size: 1.5em;
+}
+
 .search-box button {
   margin: 20px auto 0px;
   color: #ecedfe;
@@ -176,39 +187,24 @@ header {
   color: #ecedfe;
   border-radius: 5px;
   transition: .2s all;
-  min-width: 430px;
+  min-width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  background-color: #070e74;
 }
 
 .util-box button:hover {
   cursor: pointer;
-  transform: translateY(-2px);
+  background-color: #0a14a4;
 }
 
 .util-box .btn1, .util-box .btn2, .util-box .btn3 {
   margin-top: 10px;
 }
 
-.util-box .btn0 {
-  background: linear-gradient(#040843, #050b5c);
-}
-
-.util-box .btn1 {
-  background: linear-gradient(#050b5c, #070e74);
-}
-
-.util-box .btn2 {
-  background: linear-gradient(#070e74, #08118c);
-}
-
-.util-box .btn3 {
-  background: linear-gradient(#08118c, #0a14a4);
-}
-
 @media only screen and (max-width: 768px) {
   body {
-    grid-template-rows: 50px 200px 240px 240px 150px;
+    grid-template-rows: 50px 200px 320px 320px 150px;
     grid-row-gap: 30px;
   }
   .util-box, .search-box, .queue-owned, .queue-subscribed, .card {
