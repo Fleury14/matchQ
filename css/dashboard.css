@@ -152,6 +152,11 @@ header {
   margin-bottom: 20px;
 }
 
+.search-box input {
+  padding: 5px;
+  font-size: 1.5em;
+}
+
 .search-box button {
   margin: 20px auto 0px;
   color: #ecedfe;

@@ -169,9 +169,14 @@ main .queue-card .buttons {
   grid-column: 3 / 4;
   color: #040843;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  padding-right: 20px;
   align-items: center;
   font-size: 1em;
+}
+
+main .queue-card .buttons i:nth-child(2) {
+  margin-left: 20px;
 }
 
 main .queue-card .finish-button {
@@ -202,14 +207,21 @@ section {
   transition: 0.5s all;
   overflow: hidden;
   height: 160px;
+  position: relative;
 }
 
-section:hover h3 {
+section #add-arrow {
+  position: absolute;
+  font-size: 2em;
+  color: #ecedfe;
+  left: 5%;
+  width: 50px;
+  transition: 0.25s all;
+  transform: rotate(0deg);
+}
+
+section #add-arrow:hover {
   color: #e7d808;
-}
-
-section:hover {
-  border: 2px solid #e7d808;
 }
 
 section h3 {
@@ -221,8 +233,13 @@ section label {
   margin: 50px 20px;
 }
 
+section input {
+  margin-bottom: 10px;
+  padding: 3px;
+}
+
 section button {
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 5px 50px;
   background-color: #212ff2;
   color: #ecedfe;

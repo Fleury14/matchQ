@@ -6,13 +6,16 @@ const activeButton = document.getElementById('activeToggle');
 const activeStatus = document.getElementById('activeStatus');
 let isActive = true;
 const sortable = document.getElementById('sortable');
+const addArrow = document.getElementById('add-arrow')
 
 function toggleHeight() {
     section.classList.toggle('close-add-match');
     if (section.classList.contains('close-add-match')) {
         h3.innerHTML = "Add Match";
+        addArrow.style.transform = 'rotate(0deg)';
     } else {
         h3.innerHTML = "Hide Input";
+        addArrow.style.transform = 'rotate(180deg)';
     }
 }
 
@@ -71,5 +74,5 @@ $( function() {
     $( "#sortable" ).disableSelection();
   } );
 
-section.addEventListener('click', toggleHeight);
+addArrow.addEventListener('click', toggleHeight);
 activeButton.addEventListener('click', toggleActive);

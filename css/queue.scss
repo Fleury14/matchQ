@@ -174,10 +174,14 @@ main {
             grid-column: 3 / 4;
             color: $navy-blue;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
+            padding-right: 20px;
             align-items: center;
             font-size: 1em;
-
+ 
+            i:nth-child(2) {
+                margin-left: 20px;
+            }
         }
         
         .finish-button {
@@ -211,14 +215,29 @@ section {
     transition: 0.5s all;
     overflow: hidden;
     height: 160px;
+    position: relative;
 
-    &:hover h3 {
-        color: $highlight;
+    #add-arrow {
+        position: absolute;
+        font-size: 2em;
+        color: $white;
+        left: 5%;
+        width: 50px;
+        transition: 0.25s all;
+        transform: rotate(0deg);
+
+        &:hover {
+            color: $highlight;
+        }
     }
 
-    &:hover {
-        border: 2px solid $highlight;
-    }
+    // &:hover h3 {
+    //     color: $highlight;
+    // }
+
+    // &:hover {
+    //     border: 2px solid $highlight;
+    // }
 
     h3 {
         margin-top: 0;
@@ -229,8 +248,13 @@ section {
         margin: 50px 20px;
     }
 
+    input {
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+
     button {
-        margin-top: 15px;
+        margin-top: 10px;
         padding: 5px 50px;
         background-color: lighten($navy-blue, 40);
         color: $white;
