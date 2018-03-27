@@ -1,0 +1,22 @@
+@import 'utilities/vars';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+@import 'utilities/extend';
+
+body {
+    @extend %body-style;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 50px 200px repeat(4, 100px);
+}
+
+nav {
+    @extend %nav-style;
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+}
+
+header {
+    @extend %header-style;
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+}
