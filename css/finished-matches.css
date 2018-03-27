@@ -65,4 +65,31 @@ header {
   grid-row: 2 / 3;
   grid-column: 1 / 4;
 }
+
+main {
+  grid-row: 3 / span 3;
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-row-gap: 15px;
+}
+
+main .card {
+  grid-column: 1;
+  background-color: #ecedfe;
+  box-shadow: 0px 0px 10px #ecedfe;
+}
+
+main .row-1 {
+  grid-row: 1 / 2;
+}
+
+main .row-2 {
+  grid-row: 2 / 3;
+}
+
+main .row-3 {
+  grid-row: 3 / 4;
+}
 /*# sourceMappingURL=finished-matches.css.map */
