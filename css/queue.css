@@ -74,6 +74,10 @@ aside {
   color: #040843;
 }
 
+aside .active {
+  background-color: #828af8;
+}
+
 aside a {
   text-decoration: none;
   color: inherit;
@@ -179,27 +183,27 @@ main .queue-card .buttons i:nth-child(2) {
   margin-left: 20px;
 }
 
-main .queue-card .finish-button {
+.finish-button {
   color: #068e06;
   transition: 0.25s all;
 }
 
-main .queue-card .finish-button:hover {
+.finish-button:hover {
   color: #0af00a;
 }
 
-main .queue-card .delete-button {
+.delete-button {
   color: #a21e07;
   transition: 0.25s all;
 }
 
-main .queue-card .delete-button:hover {
+.delete-button:hover {
   color: #f53a19;
 }
 
 section {
   grid-column: 3 / 4;
-  grid-row: 7 / 9;
+  grid-row: 8 / 10;
   border: 2px solid #ecedfe;
   border-radius: 10px;
   padding: 20px 50px;
@@ -257,6 +261,17 @@ section button:hover {
   padding: 20px 0px 0px 0px;
 }
 
+.legend {
+  grid-row: 7 / 8;
+  grid-column: 3 / 4;
+  color: #ecedfe;
+  text-align: center;
+}
+
+.legend p {
+  font-size: 10px;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     grid-template-rows: 50px 100px 200px repeat(8, 75px);
@@ -277,8 +292,12 @@ section button:hover {
   main .queue-card {
     height: 100px;
   }
+  .legend {
+    grid-row: 9 / 10;
+    grid-column: 1 / 2;
+  }
   section {
-    grid-row: 9 / 12;
+    grid-row: 10 / 13;
     grid-column: 1 / 2;
     margin-top: 20px;
   }
