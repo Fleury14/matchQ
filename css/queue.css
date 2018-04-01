@@ -74,6 +74,10 @@ aside {
   color: #040843;
 }
 
+aside .active {
+  background-color: #828af8;
+}
+
 aside a {
   text-decoration: none;
   color: inherit;

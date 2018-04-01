@@ -79,6 +79,10 @@ aside {
     background: linear-gradient(to bottom right, darken($white, 10), darken($white, 5));
     color: $navy-blue;
 
+    .active {
+        background-color: lighten($navy-blue, 60);
+    }
+    
     a {
         text-decoration: none;
         color: inherit;

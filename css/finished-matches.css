@@ -50,25 +50,76 @@ header {
   align-items: center;
 }
 
+aside {
+  grid-column: 1 / 2;
+  grid-row: 2 / 11;
+  background: linear-gradient(to bottom right, #bcc0fb, #d4d6fc);
+  color: #040843;
+}
+
+aside .active {
+  background-color: #828af8;
+}
+
+aside a {
+  text-decoration: none;
+  color: inherit;
+}
+
+aside ul {
+  list-style: none;
+  margin-top: 50px;
+  padding: 0;
+  text-indent: 10px;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+  transition: 0.25s all;
+  padding: 5px;
+}
+
+aside ul li:hover {
+  background-color: #a3a9fa;
+  text-indent: 15px;
+}
+
+aside ul span {
+  transition: 0.25s;
+}
+
+aside ul button {
+  background: linear-gradient(to right, #03052b, #050b5c);
+  color: #ecedfe;
+  border: #040843;
+  padding: 5px 10px;
+  transition: 0.25s all;
+}
+
+aside ul button:hover {
+  cursor: pointer;
+  color: #e7d808;
+}
+
 body {
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: 200px 1fr 6fr 1fr;
   grid-template-rows: 50px 200px repeat(4, 100px);
 }
 
 nav {
   grid-row: 1 / 2;
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 
 header {
   grid-row: 2 / 3;
-  grid-column: 1 / 4;
+  grid-column: 2 / 5;
 }
 
 main {
   grid-row: 3 / span 3;
-  grid-column: 2 / 3;
+  grid-column: 3 / 4;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
