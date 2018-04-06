@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+.main-body {
+  display: grid;
+  grid-template-rows: 20vh minmax(250px, 60vh) 20vh;
+  grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
+  background: radial-gradient(#0a14a4, #040843);
+  font-family: 'Lato', sans-serif;
+}
+
+.login-box {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: #cfd2fc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 20px;
+}
+
+.login-box div {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-box h3 {
+  text-align: center;
+}
+
+.login-box input, .login-box label {
+  margin-bottom: 10px;
+}
+
+.login-box button {
+  background-color: #515cf5;
+  width: 50%;
+  color: #cfd2fc;
+  border-radius: 5px;
+  border: 2px solid #212ff2;
+  margin: 10px auto;
+  padding: 10px;
+  transition: 0.5s background-color;
+}
+
+.login-box button:hover {
+  background-color: #828af8;
+  cursor: pointer;
+}
+
+.copy {
+  color: #cfd2fc;
+  font-size: 10px;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  align-self: center;
+  justify-self: center;
+}
+/*# sourceMappingURL=login.component.css.map */
