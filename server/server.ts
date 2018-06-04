@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import { initAPI } from './api/api';
+import * as bodyParser from 'body-parser';
 
 dotenv.config();
 
@@ -20,6 +21,9 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
     console.log('Database error: ', err)
 });
+
+// middleware
+app.use(bodyParser.json());
 
 initAPI(app);
 
