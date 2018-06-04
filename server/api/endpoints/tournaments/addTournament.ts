@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-// import * as tournModel from './../../models/tournamentModel';
 import { Tournament } from './../../models/tournamentModel';
 import { onError } from "../onError";
 import * as mongoose from "mongoose";
