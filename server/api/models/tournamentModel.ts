@@ -1,10 +1,22 @@
-import * as mongoose from 'mongoose';
+import { Schema, Document, Model, model } from 'mongoose';
+import { ITournament } from '../interfaces/tournament';
 
-const Schema = mongoose.Schema;
+export interface ITournamentModel extends ITournament, Document {}
 
-const tournamentSchema:mongoose.Schema = new Schema({
+export const tournamentSchema:Schema = new Schema({
     belongsTo: {type: String, required: true},
-    name: {type: String, required: true}
+    name: {type: String, required: true},
+    createdAt: {type: Date}
 });
 
-module.exports = mongoose.model('TOURNAMENT', tournamentSchema);
+tournamentSchema.pre('save', (next) => {
+    let now = new Date();
+    if (!this.createdAt) {
+        this.createdAt = now;
+    }
+    next();
+});
+
+export const Tournament: Model<ITournamentModel> = model<ITournamentModel>('TOURNAMENT', tournamentSchema);
+// module.exports = mongoose.model('TOURNAMENT', tournamentSchema);
+// module.exports = tournamentSchema;
