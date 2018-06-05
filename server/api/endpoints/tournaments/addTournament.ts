@@ -23,7 +23,10 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
         // create new tournament object
         const newTournament = new Tournament({
             name: String(req.body.name),
-            belongsTo: String(req.body.belongsTo)
+            belongsTo: String(req.body.belongsTo),
+            active: false,
+            subscribers: [],
+            matches: []
         });
         
         // execute save
