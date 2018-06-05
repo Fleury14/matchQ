@@ -16,7 +16,6 @@ export async function decodeToken(req: Request, res: Response, next: NextFunctio
         if(!req.body.token) {
             throw new Error('Missing token');
         } 
-        console.log('Incoming token: ', req.body.token);
         admin.auth().verifyIdToken(req.body.token).then( (decodedToken) => {
             res.json({message: 'Successful Decode', result: decodedToken});
         })
