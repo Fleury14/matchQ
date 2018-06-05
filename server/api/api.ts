@@ -4,6 +4,7 @@ import { testBodyEndpoint } from "./test-body-endpoint";
 import { addTournament } from "./endpoints/tournaments/addTournament";
 import { deleteTournament } from "./endpoints/tournaments/deleteTournament";
 import { listTournaments } from "./endpoints/tournaments/listTournaments";
+import { decodeToken } from "./endpoints/auth/decodeToken";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -12,4 +13,6 @@ export function initAPI (app:Application) {
     app.route('/api/tournament/add').post(addTournament);
     app.route('/api/tournament/delete').delete(deleteTournament);
     app.route('/api/tournament/list').get(listTournaments);
+
+    app.route('/api/auth/token-check').post(decodeToken);
 }

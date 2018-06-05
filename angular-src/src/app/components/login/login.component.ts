@@ -16,11 +16,13 @@ export class LoginComponent {
         this._login.login().then( (result) => {
             console.log('result', result.credential.idToken);
             if( result.credential.idToken) {
-                localStorage.setItem('idToken', result.credential.idToken);
                 localStorage.setItem('displayName', result.user.displayName);
                 localStorage.setItem('email', result.user.email); 
                 this._router.navigateByUrl('dashboard');
             }
+            this._login.getToken().then( (token) => {
+                localStorage.setItem('idToken', token);
+            })
         } )
     }
 

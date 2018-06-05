@@ -22,4 +22,8 @@ export class LoginService {
         return this._afAuth.authState;
     }
 
+    public getToken() {
+        return firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+    }
+
 }
