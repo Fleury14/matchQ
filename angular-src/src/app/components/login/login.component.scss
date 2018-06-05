@@ -8,8 +8,6 @@ $white: hsl(236, 89%, 90%);
     display: grid;
     grid-template-rows: 20vh minmax(250px, 60vh) 20vh;
     grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
-    background: radial-gradient(lighten($navy-blue, 20), $navy-blue);
-    font-family: 'Lato', sans-serif;
 }
 
 .login-box {

@@ -2,6 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
+$navy-blue: hsl(236, 89%, 14%);
+
 body {
     margin: 0;
+    background: radial-gradient(lighten($navy-blue, 20), $navy-blue);
+    font-family: 'Lato', sans-serif;
+
 }

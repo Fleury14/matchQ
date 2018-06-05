@@ -14,7 +14,8 @@ export class LoginService {
     }
 
     public logout() {
-        return this._afAuth.auth.signOut;
+        localStorage.clear();
+        return this._afAuth.auth.signOut();
     }
 
     public getLoggedInInfo():Observable<firebase.User> {
