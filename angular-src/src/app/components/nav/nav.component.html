@@ -1,7 +1,11 @@
 <nav>
     <div class="nav-bar">
         <ul class="faded">
-            <a (click)="logout()"><li>Logout</li></a>
+            <div>
+                <a (click)="logout()"><li>Logout</li></a>
+                <p *ngIf="displayName">{{ displayName }}</p>
+            </div>
+            
             <li>Active Streams: 1</li>
             <a href="invites.html"><li>Invites: 1</li></a>
             <li>Credits</li>

@@ -5,10 +5,16 @@ import { ErrorComponent } from './components/error/error.component';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
 import { LoginRouterGuard } from './services/login.guard.service';
+import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
 
 const routes:Route[] = [{
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [ LoginRouterGuard ]
+},
+{
+    path: 'create-tournament',
+    component: TournamentCreateComponent,
     canActivate: [ LoginRouterGuard ]
 },
 {
@@ -33,4 +39,4 @@ const routes:Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent ]
+export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent, TournamentCreateComponent ]

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+
+    public displayName:string;
     
     constructor (private _login: LoginService, private _router: Router) {}
 
@@ -20,7 +22,9 @@ export class NavComponent implements OnInit {
             } else {
                 document.querySelector('.nav-bar ul').classList.add('faded'); 
             }
-        })
+        });
+
+        this.displayName = localStorage.getItem('displayName');
        
     }
 
