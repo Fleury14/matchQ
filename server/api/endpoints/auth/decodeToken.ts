@@ -3,14 +3,6 @@ import { Request, Response, NextFunction } from "express";
 import * as admin from 'firebase-admin';
 
 
-admin.initializeApp({
-    credential: admin.credential.cert({
-        clientEmail: String(process.env.FBCLIENTEMAIL),
-        privateKey:  process.env.FBPRIVKEY.replace(/\\n/g, '\n'),
-        projectId: String(process.env.FBPROJID)
-    })
-})
-
 export async function decodeToken(req: Request, res: Response, next: NextFunction) {
     try {
         if(!req.body.token) {
