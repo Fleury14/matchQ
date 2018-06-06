@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -12,15 +14,22 @@ import { AppRoutingModule, RoutingComponents } from './app.routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { LoginService } from './services/login.service';
+import { HttpService } from './services/http.service';
+import { TokenInterceptor } from './services/http.interceptor.service';
+import { TournamentService } from './services/tournament.service';
 
 @NgModule({
   declarations: [
     AppComponent, RoutingComponents, NavComponent
   ],
   imports: [
-    BrowserModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
+    BrowserModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
-  providers: [ LoginService ],
+  providers: [ LoginService, HttpService, TournamentService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

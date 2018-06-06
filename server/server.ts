@@ -25,6 +25,14 @@ mongoose.connection.on('error', (err) => {
 // middleware
 app.use(bodyParser.json());
 
+// cors
+app.use( (req:express.Request, res:express.Response, next:express.NextFunction) => {
+    res.header("Access-Control-Allow-Origin", "http://192.168.99.100:4200");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    next();
+})
+
 initAPI(app);
 
 console.log('Testing server file');
