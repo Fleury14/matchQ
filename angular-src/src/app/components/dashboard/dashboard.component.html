@@ -1,0 +1,57 @@
+<div class="dashboard-body">
+    <header>
+        <div class="banner">
+            <h1>MatchQ</h1>
+        </div>
+    </header>
+    <div class="queue-owned">
+        <h3>Queues you own</h3>
+        <!-- Begin  left card list -->
+        <div class="card owned-card card0 owned-fade">
+            <p>JardCon 2018</p>
+            <div class="info-row">
+                <span>Active: <strong><i class="danger-text">No</i></strong></span>
+                <span>Subscribers: 5</span>
+            </div>   
+        </div>
+    </div>
+    <div class="queue-subscribed">
+        <h3>Queues you're subscribed to</h3>
+        <!-- Begin right card list -->
+        <a href="queue.html"><div class="card subscribed-card card0 sub-fade">
+            <p>CenCal Standoff</p>
+            <div class="info-row">
+                <span>Active: <strong><i class="success-text">Yes</i></strong></span>
+                <span>Owner: FresnoGaming</span>
+            </div>
+        </div></a>
+        <div class="card subscribed-card card1 sub-fade">
+            <p>Mix-up Monthly</p>
+            <div class="info-row">
+                <span>Active: <strong><i class="danger-text">No</i></strong></span>
+                <span>Owner: FresnoGaming</span>
+            </div>
+        </div>
+        <div class="card subscribed-card card2 sub-fade">
+            <p>Bitwise Beatdown</p>
+            <div class="info-row">
+                <span>Active: <strong><i class="danger-text">No</i></strong></span>
+                <span>Owner: FresnoGaming</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Begin search -->
+    <div class="search-box">
+        <label for="">Search by user or queue name</label>
+        <input type="text">
+        <a><button>Search</button></a>
+    </div>
+    <!-- Begin utilities  -->
+    <div class="util-box">
+        <button routerLink="/create-tournament" class="btn0">Create new queue</button>
+        <button class="btn1">Delete queue you own</button>
+        <button class="btn2">Subscribe to new queue</button>
+        <button class="btn3">Send invites to a queue you own</button>
+    </div>
+</div>

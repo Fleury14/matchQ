@@ -23,6 +23,8 @@ services:
      - backend
     depends_on:
      - matchq-database
+    env_file:
+     - ./server/.env
     volumes:
      - ./server:/home/node/server/
      - /home/node/server/node_modules

@@ -1,0 +1,261 @@
+@import './../../../scss-imports/vars';
+
+.dashboard-body {
+    display: grid;
+    grid-template-rows: 50px 200px 320px 75px 150px;
+    grid-template-columns: 10% 35% 10% 35% 10%;
+    grid-row-gap: 10px;
+    background: linear-gradient(darken($navy-blue, 10), $navy-blue);
+    font-family: 'Lato', sans-serif;
+    color: $white;
+    min-height: 100vh;
+}
+
+.success-text {
+    color: $success;
+    font-style: normal;
+}
+
+.danger-text {
+    color: $danger;
+    font-style: normal;
+}
+
+nav {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: transparent;
+    color: $white;
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        transition: 1s all;
+        transform: translate(0, 0);
+        opacity: 1;
+
+        li {
+            color: $white;
+            transition: 0.5s color;
+        }
+
+        li:hover {
+            color: $highlight;
+            cursor: pointer;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+    }
+
+    .faded {
+        transform: translate(0, -20px);
+        opacity: 0
+    }
+
+}
+
+header {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.queue-owned {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    align-self: flex-start;
+    
+    h3 {
+        text-align: center;
+    }
+}
+
+.queue-subscribed {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+    align-self: flex-start;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+.card {
+    width: 100%;
+    text-align: center;
+    height: 95%;
+    margin-bottom: 20px;
+    // border: 1px solid $navy-blue;
+    padding: 10px 0px;
+    background-color: $white;
+    color: $navy-blue;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px darken($white, 5);
+    transform: translate(0, 0);
+    transition: background-color 0.25s, transform 0.75s, opacity 0.55s;
+    opacity: 1;
+
+    &:hover {
+        background-color: darken($white, 5);
+        cursor: pointer;
+    }
+
+    p {
+        margin: 5px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: .8em;
+        margin: 10px 10px 0 10px;
+    }
+}
+
+.owned-card {
+    // grid-column: 2 / 3;
+    align-self: center;
+}
+
+.owned-fade {
+    transform: translate(-20px, 0);
+    opacity: 0;
+}
+
+// .subscribed-card {
+//     grid-column: 4 / 5;
+// }
+
+.sub-fade {
+    transform: translate(20px, 0);
+    opacity: 0;
+}
+
+// .card0 {
+//     grid-row: 4 / 5;
+// }
+
+// .card1 {
+//     grid-row: 5 / 6;
+// }
+
+// .card2 {
+//     grid-row: 6 / 7;
+// }
+
+.search-box {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+    display: flex;
+    color: $white;
+    flex-direction: column;
+    padding: 20px;
+
+    label {
+        margin-bottom: 20px;
+    }
+
+    input {
+        padding: 5px;
+        font-size: 1.5em;
+    }
+
+    button {
+        margin: 20px auto 0px;
+        color: $white;
+        border: 1px solid $white;
+        background: linear-gradient($navy-blue, lighten($navy-blue, 5));
+        padding: 5px;
+        width: 75%;
+        border-radius: 10px;
+        transition: .4s all;
+        max-width: 200px;
+    }
+
+    button:hover {
+        background: linear-gradient(lighten($navy-blue, 5), lighten($navy-blue, 10));
+        cursor: pointer;
+    }
+}
+
+.util-box {
+    grid-column: 4 / 5;
+    grid-row: 5 / 6;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(transparent, lighten($navy-blue, 8), transparent 70%);
+
+    button {
+        padding: 5px 20%;
+        color: $white;
+        border-radius: 5px;
+        transition: .2s all;
+        min-width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: lighten($navy-blue, 10);
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: lighten($navy-blue, 20);
+    }
+
+    .btn1, .btn2, .btn3 {
+        margin-top: 10px;
+    }
+
+    // .btn0 {
+    //     background: linear-gradient($navy-blue, lighten($navy-blue, 5));
+    // }
+
+    // .btn1 {
+    //     background: linear-gradient(lighten($navy-blue, 5), lighten($navy-blue, 10));
+    // }
+
+    // .btn2 {
+    //     background: linear-gradient(lighten($navy-blue, 10), lighten($navy-blue, 15));
+    // }
+
+    // .btn3 {
+    //     background: linear-gradient(lighten($navy-blue, 15), lighten($navy-blue, 20));
+    // }
+}
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        grid-template-rows: 50px 200px 320px 320px 150px;
+        grid-row-gap: 30px;
+    }
+
+    .util-box, .search-box, .queue-owned, .queue-subscribed, .card {
+        grid-column: 1 / 6;
+    }
+
+    .queue-subscribed {
+        grid-row: 4 / 5;
+    }
+
+    .util-box {
+        grid-row: 6 / 7;
+    }
+}

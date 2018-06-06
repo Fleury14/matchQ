@@ -1,0 +1,50 @@
+@import './../../../scss-imports/vars';
+
+nav {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: transparent;
+    color: $white;
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        transition: 1s all;
+        transform: translate(0, 0);
+        opacity: 1;
+
+        div {
+            text-align: left;
+
+            p {
+                font-size: 10px;
+                margin: 0px;
+            }
+        }
+
+        li {
+            color: $white;
+            transition: 0.5s color;
+        }
+
+        li:hover {
+            color: $highlight;
+            cursor: pointer;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+    }
+
+    .faded {
+        transform: translate(0, -20px);
+        opacity: 0
+    }
+
+}
