@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +25,7 @@ import { TournamentService } from './services/tournament.service';
     AppComponent, RoutingComponents, NavComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
+    BrowserModule, BrowserAnimationsModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
   providers: [ LoginService, HttpService, TournamentService, {
     provide: HTTP_INTERCEPTORS,

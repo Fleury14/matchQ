@@ -15,4 +15,11 @@ export class TournamentService {
 
         return this._http.post(`/tournament/add`, payload);
     }
+
+    public getMyTournament(uid: string) {
+        const payload = {
+            uid: uid
+        }
+        return this._http.post('/tournament/get-mine', payload);
+    }
 }
