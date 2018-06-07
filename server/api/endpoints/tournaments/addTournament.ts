@@ -24,8 +24,10 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
                 name: String(req.body.name),
                 belongsTo: String(req.body.belongsTo),
                 active: false,
+                createdAt: new Date(),
                 subscribers: [],
                 matches: []
+
             });
 
             // execute save

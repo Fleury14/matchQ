@@ -44,7 +44,7 @@ app.use ( async (req:express.Request, res:express.Response, next:express.NextFun
     try {  // This prevents any API calls without a valid token. Also stores the userID in the request for future use
         const authHeader = req.get('Authorization');
         const token = authHeader.slice(7);
-        // console.log('token', token);
+        console.log('token', token);
         const decodedToken = await admin.auth().verifyIdToken(token);
         // console.log('decoded token', decodedToken);
         console.log(`expiration date: ${decodedToken.exp} vs ${Math.floor(Date.now() / 1000)}`)
