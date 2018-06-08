@@ -20,13 +20,17 @@ import { HttpService } from './services/http.service';
 import { TokenInterceptor } from './services/http.interceptor.service';
 import { TournamentService } from './services/tournament.service';
 
+import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
+
 @NgModule({
   declarations: [
-    AppComponent, RoutingComponents, NavComponent
+    AppComponent, RoutingComponents, NavComponent, DeleteModal
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
+    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
+  entryComponents: [ DeleteModal ],
   providers: [ LoginService, HttpService, TournamentService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

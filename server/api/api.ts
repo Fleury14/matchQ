@@ -12,7 +12,7 @@ export function initAPI (app:Application) {
     app.route('/api/body-test').post(testBodyEndpoint);
 
     app.route('/api/tournament/add').post(addTournament);
-    app.route('/api/tournament/delete').delete(deleteTournament);
+    app.route('/api/tournament/delete').post(deleteTournament);
     app.route('/api/tournament/list').get(listTournaments);
     app.route('/api/tournament/get-mine').post(getMyTournament);
 

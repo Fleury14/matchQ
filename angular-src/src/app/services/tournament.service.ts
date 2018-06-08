@@ -22,4 +22,13 @@ export class TournamentService {
         }
         return this._http.post('/tournament/get-mine', payload);
     }
+
+    public deleteTournament(name:string) {
+        const payload = {
+            uid: localStorage.getItem('uid'),
+            name: name
+        }
+
+        return this._http.post('/tournament/delete', payload);
+    }
 }
