@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
     selector: 'app-login',
@@ -31,9 +32,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             console.log('result', result.credential.idToken);
             if( result.credential.idToken) {
                 localStorage.setItem('displayName', result.user.displayName);
+                this._login.sendInfo();
                 localStorage.setItem('email', result.user.email);
                 localStorage.setItem('uid', result.user.uid);
                 this._router.navigateByUrl('dashboard');
+                // this._login.setSubject(result);
             }
             this._login.getToken().then( (token) => {
                 localStorage.setItem('idToken', token);
