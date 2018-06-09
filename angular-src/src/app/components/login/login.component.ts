@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     public login() {
         this._login.login().then( (result) => {
-            console.log('result', result.credential.idToken);
+            console.log('result', result);
             if( result.credential.idToken) {
                 localStorage.setItem('displayName', result.user.displayName);
                 this._login.sendInfo();
