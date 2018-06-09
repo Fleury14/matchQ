@@ -18,15 +18,6 @@ export class NavComponent implements OnInit {
 
     ngOnInit(): void {
 
-        // this.loginSub = this._login.getLoggedInInfo().subscribe( (info) => {
-        //     console.log('userinfo', info);
-        //     if (info) {
-        //         document.querySelector('.nav-bar ul').classList.remove('faded');
-        //     } else {
-        //         document.querySelector('.nav-bar ul').classList.add('faded');
-        //     }
-        // });
-
         this.userSub = this._login.getInfo().subscribe( (response) => {
             if(response) {
                 this.displayName = response.userName;

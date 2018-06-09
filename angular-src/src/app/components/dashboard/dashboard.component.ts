@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     constructor(private _tourn:TournamentService, private _matDialog: MatDialog) {}
     
     ngAfterViewInit(): void {
+        console.log('grabbing list');
         this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
             this.myTournaments = response['result'];
             // console.log(this.myTournaments);
