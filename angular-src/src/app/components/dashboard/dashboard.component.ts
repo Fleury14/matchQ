@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     constructor(private _tourn:TournamentService, private _matDialog: MatDialog) {}
     
     ngAfterViewInit(): void {
-        console.log('grabbing list');
+        // console.log('grabbing list');
         this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
             this.myTournaments = response['result'];
             // console.log(this.myTournaments);
@@ -51,10 +51,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
 
     private _refresh() {
-        console.log('executing refresh');
+        // console.log('executing refresh');
         this._tournSub.unsubscribe();
         this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
-            console.log('reassigning the following', response);
+            // console.log('reassigning the following', response);
             this.myTournaments = response['result'];
             // console.log(this.myTournaments);
         });

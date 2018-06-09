@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     ngOnInit(): void {
         this._infoSub = this._login.getLoggedInInfo().subscribe( (result) => {
-            console.log('login check', result);
+            // console.log('login check', result);
             if(result && localStorage.getItem('idToken')) {
                 this._login.sendInfo();
-                console.log('kicking to dashboard');
+                // console.log('kicking to dashboard');
                 this._router.navigateByUrl('dashboard');
             }
         })
@@ -31,19 +31,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     public login() {
         this._login.login().then( (result) => {
-            console.log('result', result);
+            // console.log('result', result);
             if( result.credential.idToken) {
                 localStorage.setItem('displayName', result.user.displayName);
                 this._login.sendInfo();
                 localStorage.setItem('email', result.user.email);
                 localStorage.setItem('uid', result.user.uid);
                 
-                // this._login.setSubject(result);
             }
             this._login.getToken().then( (token) => {
-                console.log('token set');
+                // console.log('token set');
                 localStorage.setItem('idToken', token);
-                console.log('kicking to dashboard');
+                // console.log('kicking to dashboard');
                 this._router.navigateByUrl('dashboard');
             })
         } )
