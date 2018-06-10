@@ -17,9 +17,9 @@ export class NavComponent implements OnInit {
     constructor (private _login: LoginService, private _router: Router) {}
 
     ngOnInit(): void {
-        console.log('nav on init');
+        // console.log('nav on init');
         this.userSub = this._login.getInfo().subscribe( (response) => {
-            console.log('nav response', response);
+            // console.log('nav response', response);
             if(response) {
                 this.displayName = response.userName;
                 document.querySelector('.nav-bar ul').classList.remove('faded');    

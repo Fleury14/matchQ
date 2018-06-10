@@ -43,9 +43,9 @@
     
     <!-- Begin search -->
     <div class="search-box">
-        <label for="">Search by user or queue name</label>
-        <input type="text">
-        <a><button>Search</button></a>
+        <label for="searchInput">Search by user or queue name</label>
+        <input type="text" name="searchInput" [(ngModel)]="searchInput">
+        <a><button (click)="search()">Search</button></a>
     </div>
     <!-- Begin utilities  -->
     <div class="util-box">

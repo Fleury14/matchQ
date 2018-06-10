@@ -4,6 +4,8 @@ import { ITournament } from '../../interfaces/tournament';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { DeleteModal } from './delete-modal/delete-modal';
+import { take } from 'rxjs/operators';
+import { SearchModal } from './search-modal/search-modal';
 
 @Component({
     selector: 'app-dashboard',
@@ -15,6 +17,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     
     public myTournaments:ITournament[];
     private _tournSub: Subscription;
+    public searchInput:string;
 
     constructor(private _tourn:TournamentService, private _matDialog: MatDialog) {}
     
@@ -47,6 +50,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         deleteMod.afterClosed().subscribe( (tourn:ITournament) => {
             console.log('Deleting result', tourn);
             this._delete(tourn.name);
+        })
+    }
+
+    public search() {
+        this._tourn.searchTournament(this.searchInput).pipe(
+            take(1)
+        ).subscribe( searchResult => {
+            console.log('search result:', searchResult);
+            if(searchResult['result'] && searchResult['result'].length > 0) {
+                const searchMod = this._matDialog.open(SearchModal, {
+                    data: { list: searchResult['result'] },
+                    width: '400px'
+                })
+            }
+            
         })
     }
 

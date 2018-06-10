@@ -22,15 +22,16 @@ import { TournamentService } from './services/tournament.service';
 
 import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
+import { SearchModal } from './components/dashboard/search-modal/search-modal';
 
 @NgModule({
   declarations: [
-    AppComponent, RoutingComponents, NavComponent, DeleteModal
+    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
-  entryComponents: [ DeleteModal ],
+  entryComponents: [ DeleteModal, SearchModal ],
   providers: [ LoginService, HttpService, TournamentService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

@@ -31,4 +31,12 @@ export class TournamentService {
 
         return this._http.post('/tournament/delete', payload);
     }
+
+    public searchTournament(search:string) {
+        const payload = {
+            uid: localStorage.getItem('uid'),
+            search: search
+        }
+        return this._http.post('/tournament/search', payload);
+    }
 }
