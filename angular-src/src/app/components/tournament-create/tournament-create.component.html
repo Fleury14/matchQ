@@ -3,11 +3,12 @@
         <h1>Create Queue</h1>
     </header>
     <main>
-        <label for="">Queue Name:</label>
-        <input type="text">
-        <button>Submit</button>
+        <label for="tournamentName">Queue Name:</label>
+        <input type="text" name="tournamentName" [(ngModel)]="tournamentName">
+        <button (click)="create()">Submit</button>
+        <p [ngClass]="{'opac-zero': !submitMessage, 'opac-one': submitMessage}">{{ submitMessage }}</p>
     </main>
     <section>
-        <a href="dashboard.html"><button>Back to Dashboard</button></a>
+        <a routerLink="/dashboard"><button>Back to Dashboard</button></a>
     </section>
 </div>

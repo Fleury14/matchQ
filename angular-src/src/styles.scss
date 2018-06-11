@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 $navy-blue: hsl(236, 89%, 14%);
 
@@ -9,4 +10,12 @@ body {
     background: radial-gradient(lighten($navy-blue, 20), $navy-blue);
     font-family: 'Lato', sans-serif;
 
+}
+
+.opac-zero {
+    opacity: 0;
+}
+
+.opac-one {
+    opacity: 1;
 }

@@ -17,28 +17,30 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
         console.log('Result:', result);
         if (result) {
             console.log('Tournament already exists');
-            throw new Error('Tourament existo');
-        }
+            res.json({message: 'Cannot add: Tournament with that name already exists'})
+        } else {
+            // create new tournament object
+            const newTournament = new Tournament({
+                name: String(req.body.name),
+                belongsTo: String(req.body.belongsTo),
+                active: false,
+                createdAt: new Date(),
+                subscribers: [],
+                matches: []
 
-        // create new tournament object
-        const newTournament = new Tournament({
-            name: String(req.body.name),
-            belongsTo: String(req.body.belongsTo),
-            active: false,
-            subscribers: [],
-            matches: []
-        });
-        
-        // execute save
-        console.log(`Saving ${req.body.name} to database...`);
-        await newTournament.save( (err, newTournament) => {
-            if (err) {
-                throw new Error('Error in save...');
-            } else {
-                console.log('Tournament add successful');
-                res.json({message: 'Successful add', result: newTournament});
-            }
-        })
+            });
+
+            // execute save
+            console.log(`Saving ${req.body.name} to database...`);
+            await newTournament.save( (err, newTournament) => {
+                if (err) {
+                    throw new Error('Error in save...');
+                } else {
+                    console.log('Tournament add successful');
+                    res.json({message: 'Successful add', result: newTournament});
+                }
+            })
+        }     
     } catch (err) {
         onError(res, 'Error while adding tournament to db', err);
     }

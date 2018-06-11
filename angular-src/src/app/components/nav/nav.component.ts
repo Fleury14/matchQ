@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-nav',
@@ -10,22 +11,25 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 
     public displayName:string;
-    
+    public loginSub:Subscription;
+    public userSub:Subscription;
+
     constructor (private _login: LoginService, private _router: Router) {}
 
     ngOnInit(): void {
-
-        this._login.getLoggedInInfo().subscribe( (info) => {
-            console.log('userinfo', info);
-            if (info) {
-                document.querySelector('.nav-bar ul').classList.remove('faded');
+        // console.log('nav on init');
+        this.userSub = this._login.getInfo().subscribe( (response) => {
+            // console.log('nav response', response);
+            if(response) {
+                this.displayName = response.userName;
+                document.querySelector('.nav-bar ul').classList.remove('faded');    
             } else {
-                document.querySelector('.nav-bar ul').classList.add('faded'); 
+                this.displayName = null;
+                document.querySelector('.nav-bar ul').classList.add('faded');
             }
+            
         });
-
-        this.displayName = localStorage.getItem('displayName');
-       
+       this._login.sendInfo();
     }
 
     public logout() {

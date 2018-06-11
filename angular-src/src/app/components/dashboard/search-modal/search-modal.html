@@ -1,0 +1,12 @@
+<h3 mat-dialog-title>Search Results:</h3>
+<div class="result-card" mat-dialog-content *ngFor="let tourn of data.list; index as i">
+    <p>{{ tourn.name }}</p>
+    <button mat-raised-button color="accent" class="result-sub">{{ tourn.subscribers?.includes(uid) && 'Unsubscribe?' || 'Subscribe?' }}</button>
+</div>
+<div class="close-row">
+    <button mat-button [mat-dialog-close]="">Close</button>
+</div>
+
+<!-- <ul mat-dialog-content>
+    <button *ngFor="let tourn of data.list" mat-button [mat-dialog-close]="tourn"> {{ tourn.name }}</button>
+</ul> -->
