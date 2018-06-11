@@ -48,8 +48,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         });
 
         deleteMod.afterClosed().subscribe( (tourn:ITournament) => {
-            console.log('Deleting result', tourn);
-            this._delete(tourn.name);
+            if(tourn) {
+                console.log('Deleting result', tourn);
+                this._delete(tourn.name);
+            }            
         })
     }
 

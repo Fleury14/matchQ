@@ -1,5 +1,5 @@
 <h3 mat-dialog-title>Pick a tournament to delete:</h3>
 <ul mat-dialog-content>
-    <button *ngFor="let tourn of data.list" mat-button [mat-dialog-close]="tourn"> {{ tourn.name }}</button>
+    <button *ngFor="let tourn of data.list" mat-button [mat-dialog-close]="tourn"> {{ tourn?.name }}</button>
 </ul>
 
