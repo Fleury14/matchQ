@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     private _tournSub: Subscription;
     private _subscriptionSub: Subscription;
     public searchInput:string;
+    public htmlStyles = window.getComputedStyle(document.querySelector("html"));
 
     constructor(private _tourn:TournamentService, private _matDialog: MatDialog, private _sub: SubscriptionService) {}
     
@@ -41,12 +42,19 @@ export class DashboardComponent implements OnInit {
         // console.log('grabbing list');
         this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
             this.myTournaments = response['result'];
+            let rowNum = parseInt(this.htmlStyles.getPropertyValue("--rowNum"));
+            if( this.myTournaments.length > rowNum ) {
+                document.documentElement.style.setProperty("--rowNum", this.myTournaments.length.toString());
+            }
             // console.log(this.myTournaments);
         });
 
         this._subscriptionSub = this._sub.getBySub(localStorage.getItem('uid')).subscribe( (response) => {
-            console.log('result from init', response['result']);
             this.subbedTournaments = response['result'];
+            let rowNum = parseInt(this.htmlStyles.getPropertyValue("--rowNum"));
+            if( this.subbedTournaments.length > rowNum ) {
+                document.documentElement.style.setProperty("--rowNum", this.subbedTournaments.length.toString());
+            }
         } );
     }
 
@@ -66,10 +74,11 @@ export class DashboardComponent implements OnInit {
     }
 
     public search() {
+        if (!this.searchInput) { return; }
         this._tourn.searchTournament(this.searchInput).pipe(
             take(1)
         ).subscribe( searchResult => {
-            console.log('search result:', searchResult);
+            // console.log('search result:', searchResult);
             let searchMod;
             if(searchResult['result'] && searchResult['result'].length > 0) {
                 searchMod = this._matDialog.open(SearchModal, {
@@ -93,7 +102,7 @@ export class DashboardComponent implements OnInit {
 
     private _delete(name:string) {
         this._tourn.deleteTournament(name).subscribe(result => {
-            console.log('result from delete:', result);
+            // console.log('result from delete:', result);
             this._refresh();
         });
     }

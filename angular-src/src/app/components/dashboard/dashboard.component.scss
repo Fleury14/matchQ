@@ -2,7 +2,7 @@
 
 .dashboard-body {
     display: grid;
-    grid-template-rows: 50px 200px 320px 75px 150px;
+    grid-template-rows: 50px 100px 30px repeat(var(--rowNum), 75px) 75px 200px;
     grid-template-columns: 10% 35% 10% 35% 10%;
     grid-row-gap: 10px;
     background: linear-gradient(darken($navy-blue, 10), $navy-blue);
@@ -75,7 +75,7 @@ header {
 
 .queue-owned {
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row-start: 3;
     align-self: flex-start;
     
     h3 {
@@ -163,7 +163,8 @@ header {
 
 .search-box {
     grid-column: 2 / 3;
-    grid-row: 5 / 6;
+    grid-row-start: calc( var(--rowNum) + 5 );
+    grid-row-end: calc( var(--rowNum) + 6 );
     display: flex;
     color: $white;
     flex-direction: column;
@@ -198,7 +199,8 @@ header {
 
 .util-box {
     grid-column: 4 / 5;
-    grid-row: 5 / 6;
+    grid-row-start: calc( var(--rowNum) + 5 );
+    grid-row-end: calc( var(--rowNum) + 6 );
     display: flex;
     flex-direction: column;
     background: radial-gradient(transparent, lighten($navy-blue, 8), transparent 70%);

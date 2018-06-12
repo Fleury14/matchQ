@@ -13,7 +13,6 @@ export class TournamentService {
             belongsTo: localStorage.getItem('uid'),
             belongsName: localStorage.getItem('displayName')
         }
-        // console.log('payload from tserviceadd', payload);
         return this._http.post(`/tournament/add`, payload);
     }
 

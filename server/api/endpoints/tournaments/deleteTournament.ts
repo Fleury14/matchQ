@@ -26,19 +26,21 @@ export async function deleteTournament (req: Request, res: Response, next: NextF
 
                 // make sure person making the request actually owns said tournament
                 if (req.body.uid !== result.belongsTo) {
+                    console.log('403');
                     res.status(403).json({message: 'Tried to delete a tournament that wasnt yours'})
+                } else {
+                    console.log(`Deleting record that matches ${req.body.name}`)
+                    Tournament.deleteOne({name: req.body.name}, (err) => {
+                        if (err) {
+                            console.log('Error in database delete');
+                            res.status(500).json({message: 'Error in database deleter'});
+                        } else {
+                            console.log('Successfull delete');
+                            res.status(200).json({message: 'Successful delete'});
+                        }
+                    });                    
                 }
 
-                console.log(`Deleting record that matches ${req.body.name}`)
-                Tournament.deleteOne({name: req.body.name}, (err) => {
-                    if (err) {
-                        console.log('Error in database delete');
-                        res.status(500).json({message: 'Error in database deleter'});
-                    } else {
-                        console.log('Successfull delete');
-                        res.status(200).json({message: 'Successful delete'});
-                    }
-                })
             }
         });
 
