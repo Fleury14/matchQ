@@ -7,6 +7,8 @@ import { listTournaments } from "./endpoints/tournaments/listTournaments";
 import { decodeToken } from "./endpoints/auth/decodeToken";
 import { getMyTournament } from "./endpoints/tournaments/getMyTournament";
 import { searchTournament } from "./endpoints/tournaments/searchTournament";
+import { addSubscription } from "./endpoints/subscriptions/addSubscription";
+import { removeSubscription } from "./endpoints/subscriptions/removeSubscription";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -17,6 +19,9 @@ export function initAPI (app:Application) {
     app.route('/api/tournament/list').get(listTournaments);
     app.route('/api/tournament/get-mine').post(getMyTournament);
     app.route('/api/tournament/search').post(searchTournament);
+
+    app.route('/api/subscription/add').post(addSubscription);
+    app.route('/api/subscription/remove').post(removeSubscription);
 
     app.route('/api/auth/token-check').post(decodeToken);
 }
