@@ -5,7 +5,7 @@ import * as mongoose from "mongoose";
 import { ITournament } from "../../interfaces/tournament";
 
 export async function getTournamentsBySub(req: Request, res: Response, next: NextFunction) {
-    console.log('Endpoint for adding subscription hit');
+    console.log('Endpoint for adding subscription hit', req.body);
     try {
         // make sure data fits schema
         if( !req.body.uid ) {

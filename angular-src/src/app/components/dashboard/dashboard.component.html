@@ -18,25 +18,11 @@
     <div class="queue-subscribed">
         <h3>Queues you're subscribed to</h3>
         <!-- Begin right card list -->
-        <a href="queue.html"><div class="card subscribed-card card0 sub-fade">
-            <p>CenCal Standoff</p>
+        <div *ngFor="let tourn of subbedTournaments" class="card subscribed-card card0">
+            <p>{{ tourn.name }}</p>
             <div class="info-row">
-                <span>Active: <strong><i class="success-text">Yes</i></strong></span>
-                <span>Owner: FresnoGaming</span>
-            </div>
-        </div></a>
-        <div class="card subscribed-card card1 sub-fade">
-            <p>Mix-up Monthly</p>
-            <div class="info-row">
-                <span>Active: <strong><i class="danger-text">No</i></strong></span>
-                <span>Owner: FresnoGaming</span>
-            </div>
-        </div>
-        <div class="card subscribed-card card2 sub-fade">
-            <p>Bitwise Beatdown</p>
-            <div class="info-row">
-                <span>Active: <strong><i class="danger-text">No</i></strong></span>
-                <span>Owner: FresnoGaming</span>
+                <span>Active: <strong><i class="success-text">{{ tourn.active && 'Yes' || 'No' }}</i></strong></span>
+                <span>Owner: {{ tourn.belongsName }}</span>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
     console.log('Endpoint for adding tournament hit');
     try {
         // make sure data fits schema
-        if( !req.body.name || !req.body.belongsTo ) {
+        if( !req.body.name || !req.body.belongsTo || !req.body.belongsName) {
             console.log('Missing required fields');
             throw new TypeError('Missing fields');
         }
@@ -23,6 +23,7 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
             const newTournament = new Tournament({
                 name: String(req.body.name),
                 belongsTo: String(req.body.belongsTo),
+                belongsName: String(req.body.belongsName),
                 active: false,
                 createdAt: new Date(),
                 subscribers: [],
@@ -34,7 +35,7 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
             console.log(`Saving ${req.body.name} to database...`);
             await newTournament.save( (err, newTournament) => {
                 if (err) {
-                    throw new Error('Error in save...');
+                    throw new Error('Error in save via database...');
                 } else {
                     console.log('Tournament add successful');
                     res.json({message: 'Successful add', result: newTournament});

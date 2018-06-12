@@ -10,9 +10,10 @@ export class TournamentService {
     public createTournament(name: string) {
         const payload = {
             name: name,
-            belongsTo: localStorage.getItem('uid')
+            belongsTo: localStorage.getItem('uid'),
+            belongsName: localStorage.getItem('displayName')
         }
-
+        // console.log('payload from tserviceadd', payload);
         return this._http.post(`/tournament/add`, payload);
     }
 

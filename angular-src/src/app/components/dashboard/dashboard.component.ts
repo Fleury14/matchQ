@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
 import { ITournament } from '../../interfaces/tournament';
 import { Subscription } from 'rxjs';
@@ -13,32 +13,41 @@ import { SubscriptionService } from '../../services/subscription.service';
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 
     
     public myTournaments:ITournament[];
+    public subbedTournaments: ITournament[];
     private _tournSub: Subscription;
+    private _subscriptionSub: Subscription;
     public searchInput:string;
 
     constructor(private _tourn:TournamentService, private _matDialog: MatDialog, private _sub: SubscriptionService) {}
     
-    ngAfterViewInit(): void {
+
+
+    ngOnInit(): void {
+
+        this._setSubs();
+
+        const cards = document.getElementsByClassName('card');
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('owned-fade');
+            cards[i].classList.remove('sub-fade');    
+        }
+    }
+
+    private _setSubs() {
         // console.log('grabbing list');
         this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
             this.myTournaments = response['result'];
             // console.log(this.myTournaments);
         });
 
-    }
-
-    ngOnInit(): void {
-
-       
-        const cards = document.getElementsByClassName('card');
-        for (let i = 0; i < cards.length; i++) {
-            cards[i].classList.remove('owned-fade');
-            cards[i].classList.remove('sub-fade');    
-        }
+        this._subscriptionSub = this._sub.getBySub(localStorage.getItem('uid')).subscribe( (response) => {
+            console.log('result from init', response['result']);
+            this.subbedTournaments = response['result'];
+        } );
     }
 
     public openDelete() {
@@ -79,11 +88,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private _refresh() {
         // console.log('executing refresh');
         this._tournSub.unsubscribe();
-        this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
-            // console.log('reassigning the following', response);
-            this.myTournaments = response['result'];
-            // console.log(this.myTournaments);
-        });
+        this._setSubs();
     }
 
     private _delete(name:string) {
