@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { DeleteModal } from './delete-modal/delete-modal';
 import { take } from 'rxjs/operators';
 import { SearchModal } from './search-modal/search-modal';
+import { SubscriptionService } from '../../services/subscription.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private _tournSub: Subscription;
     public searchInput:string;
 
-    constructor(private _tourn:TournamentService, private _matDialog: MatDialog) {}
+    constructor(private _tourn:TournamentService, private _matDialog: MatDialog, private _sub: SubscriptionService) {}
     
     ngAfterViewInit(): void {
         // console.log('grabbing list');
@@ -60,12 +61,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             take(1)
         ).subscribe( searchResult => {
             console.log('search result:', searchResult);
+            let searchMod;
             if(searchResult['result'] && searchResult['result'].length > 0) {
-                const searchMod = this._matDialog.open(SearchModal, {
+                searchMod = this._matDialog.open(SearchModal, {
                     data: { list: searchResult['result'] },
                     width: '400px'
                 })
             }
+
+            searchMod.afterClosed().subscribe( (tourn:ITournament) => {
+                this._refresh();
+            } );
             
         })
     }
