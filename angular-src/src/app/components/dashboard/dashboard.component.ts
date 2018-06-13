@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
 import { ITournament } from '../../interfaces/tournament';
 import { Subscription } from 'rxjs';
@@ -6,38 +6,56 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { DeleteModal } from './delete-modal/delete-modal';
 import { take } from 'rxjs/operators';
 import { SearchModal } from './search-modal/search-modal';
+import { SubscriptionService } from '../../services/subscription.service';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 
     
     public myTournaments:ITournament[];
+    public subbedTournaments: ITournament[];
     private _tournSub: Subscription;
+    private _subscriptionSub: Subscription;
     public searchInput:string;
+    public htmlStyles = window.getComputedStyle(document.querySelector("html"));
 
-    constructor(private _tourn:TournamentService, private _matDialog: MatDialog) {}
+    constructor(private _tourn:TournamentService, private _matDialog: MatDialog, private _sub: SubscriptionService) {}
     
-    ngAfterViewInit(): void {
-        // console.log('grabbing list');
-        this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
-            this.myTournaments = response['result'];
-            // console.log(this.myTournaments);
-        });
 
-    }
 
     ngOnInit(): void {
 
-       
+        this._setSubs();
+
         const cards = document.getElementsByClassName('card');
         for (let i = 0; i < cards.length; i++) {
             cards[i].classList.remove('owned-fade');
             cards[i].classList.remove('sub-fade');    
         }
+    }
+
+    private _setSubs() {
+        // console.log('grabbing list');
+        this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
+            this.myTournaments = response['result'];
+            let rowNum = parseInt(this.htmlStyles.getPropertyValue("--rowNum"));
+            if( this.myTournaments.length > rowNum ) {
+                document.documentElement.style.setProperty("--rowNum", this.myTournaments.length.toString());
+            }
+            // console.log(this.myTournaments);
+        });
+
+        this._subscriptionSub = this._sub.getBySub(localStorage.getItem('uid')).subscribe( (response) => {
+            this.subbedTournaments = response['result'];
+            let rowNum = parseInt(this.htmlStyles.getPropertyValue("--rowNum"));
+            if( this.subbedTournaments.length > rowNum ) {
+                document.documentElement.style.setProperty("--rowNum", this.subbedTournaments.length.toString());
+            }
+        } );
     }
 
     public openDelete() {
@@ -56,16 +74,22 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
 
     public search() {
+        if (!this.searchInput) { return; }
         this._tourn.searchTournament(this.searchInput).pipe(
             take(1)
         ).subscribe( searchResult => {
-            console.log('search result:', searchResult);
+            // console.log('search result:', searchResult);
+            let searchMod;
             if(searchResult['result'] && searchResult['result'].length > 0) {
-                const searchMod = this._matDialog.open(SearchModal, {
+                searchMod = this._matDialog.open(SearchModal, {
                     data: { list: searchResult['result'] },
                     width: '400px'
                 })
             }
+
+            searchMod.afterClosed().subscribe( (tourn:ITournament) => {
+                this._refresh();
+            } );
             
         })
     }
@@ -73,16 +97,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private _refresh() {
         // console.log('executing refresh');
         this._tournSub.unsubscribe();
-        this._tournSub = this._tourn.getMyTournament(localStorage.getItem('uid')).subscribe((response) => {
-            // console.log('reassigning the following', response);
-            this.myTournaments = response['result'];
-            // console.log(this.myTournaments);
-        });
+        this._setSubs();
     }
 
     private _delete(name:string) {
         this._tourn.deleteTournament(name).subscribe(result => {
-            console.log('result from delete:', result);
+            // console.log('result from delete:', result);
             this._refresh();
         });
     }

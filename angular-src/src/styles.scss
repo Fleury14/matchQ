@@ -5,6 +5,10 @@
 
 $navy-blue: hsl(236, 89%, 14%);
 
+:root {
+    --rowNum: 4;
+}
+
 body {
     margin: 0;
     background: radial-gradient(lighten($navy-blue, 20), $navy-blue);

@@ -18,32 +18,18 @@
     <div class="queue-subscribed">
         <h3>Queues you're subscribed to</h3>
         <!-- Begin right card list -->
-        <a href="queue.html"><div class="card subscribed-card card0 sub-fade">
-            <p>CenCal Standoff</p>
+        <div *ngFor="let tourn of subbedTournaments" class="card subscribed-card card0">
+            <p>{{ tourn.name }}</p>
             <div class="info-row">
-                <span>Active: <strong><i class="success-text">Yes</i></strong></span>
-                <span>Owner: FresnoGaming</span>
-            </div>
-        </div></a>
-        <div class="card subscribed-card card1 sub-fade">
-            <p>Mix-up Monthly</p>
-            <div class="info-row">
-                <span>Active: <strong><i class="danger-text">No</i></strong></span>
-                <span>Owner: FresnoGaming</span>
-            </div>
-        </div>
-        <div class="card subscribed-card card2 sub-fade">
-            <p>Bitwise Beatdown</p>
-            <div class="info-row">
-                <span>Active: <strong><i class="danger-text">No</i></strong></span>
-                <span>Owner: FresnoGaming</span>
+                <span>Active: <strong><i class="success-text">{{ tourn.active && 'Yes' || 'No' }}</i></strong></span>
+                <span>Owner: {{ tourn.belongsName }}</span>
             </div>
         </div>
     </div>
     
     <!-- Begin search -->
     <div class="search-box">
-        <label for="searchInput">Search by user or queue name</label>
+        <label for="searchInput">Search by user or queue name to subscribe</label>
         <input type="text" name="searchInput" [(ngModel)]="searchInput">
         <a><button (click)="search()">Search</button></a>
     </div>
@@ -51,7 +37,6 @@
     <div class="util-box">
         <button mat-button routerLink="/create-tournament" class="btn0">Create new queue</button>
         <button mat-button (click)="openDelete()" class="btn1">Delete queue you own</button>
-        <button mat-button class="btn2">Subscribe to new queue</button>
         <button mat-button class="btn3">Send invites to a queue you own</button>
     </div>
 </div>
