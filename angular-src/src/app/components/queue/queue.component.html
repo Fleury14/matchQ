@@ -1,0 +1,85 @@
+<div class="queue-body">
+    <header>
+        <h1>Cencal Standoff 2018</h1>
+    </header>
+    <aside>
+        <ul>
+            <a href="dashboard.html"><li><strong>Back to dashboard</strong></li></a>
+            <li class="active">Match list</li>
+            <li>Invite users</li>
+            <li>Unsubscribe</li>
+            <li>Active: <strong><span id="activeStatus" class="success">Yes</span></strong></li>
+            <li>
+                <button id="activeToggle">Toggle Active</button>
+            </li>
+            <a href="finished-matches.html"><li>Finished Matches</li></a>
+        </ul>
+    </aside>
+    <main>
+        <ul id="sortable">
+            <li class="queue-card" draggable="true" id="card0" ondrop="drop(event)">
+                <div class="status">
+                    <p class="status-text"><strong>On stream</strong></p>
+                </div>
+                <div class="matchup">
+                    <h3>Samurai <span>vs</span> Genesis_Frenzy</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card1">
+                <div class="status">
+                    <p class="status-text">On deck</p>
+                </div>
+                <div class="matchup">
+                    <h3>Jard <span>vs</span> Scam Lee</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card2">
+                <div class="status">
+                    <p class="status-text">#3</p>
+                </div>
+                <div class="matchup">
+                    <h3>Aj <span>vs</span> LPN</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+            <li class="queue-card card3">
+                <div class="status">
+                    <p class="status-text">#4</p>
+                </div>
+                <div class="matchup">
+                    <h3>El Rado <span>vs</span> Fleury14</h3>
+                </div>
+                <div class="buttons">
+                    <i class="fas fa-check-circle finish-button"></i>
+                    <i class="fas fa-times-circle delete-button"></i>
+                </div>
+            </li>
+        </ul>
+        
+    </main>
+    <section class="close-add-match">
+        <i class="fas fa-angle-down" id="add-arrow"></i>
+        <h3 id="sectionh3">Add match</h3>
+        <label for="">Player 1</label>
+        <input type="text">
+        <br>
+        <label for="">Player 2</label>
+        <input type="text">
+        <br>
+        <button>Submit</button>
+    </section>
+    <div class="legend">
+        <p><i class="fas fa-check-circle finish-button"></i> = Remove match and mark as finished <i class="fas fa-times-circle delete-button"></i> = Remove match without being marked as finished.</p>
+    </div>
+</div>
