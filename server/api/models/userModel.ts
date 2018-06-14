@@ -8,10 +8,10 @@ export const userSchema:Schema = new Schema({
     email: {type: String, required: true},
     subscriptions: {type: [String], required: true},
     uid: {type: String, required: true},
-    invites: {
+    invites: [{
         tournId: { type: String, required: true },
         tournName: { type: String, required: true }
-    },
+    }],
 });
 
 userSchema.pre('save', (next) => {
