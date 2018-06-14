@@ -16,6 +16,10 @@ export class LoginRouterGuard implements CanActivate {
                 if (!authState) {
                     this._router.navigateByUrl('/');
                 }
+
+                if(authState) {
+                    console.log('checking if user is in db...');
+                }
                  return Boolean(authState) 
                 } )
         );

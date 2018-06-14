@@ -9,6 +9,7 @@ export const tournamentSchema:Schema = new Schema({
     name: {type: String, required: true},
     active: {type: Boolean, required: true},
     subscribers: {type: [String]},
+    access: {type: [String]},
     matches: { type: Schema.Types.Mixed }, // TODO when a strict match type is set, adjust here
     createdAt: {type: Date}
 });
