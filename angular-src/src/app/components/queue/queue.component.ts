@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, take } from 'rxjs/operators';
 import { ITournament } from '../../interfaces/tournament';
 import { QueueService } from '../../services/queue.service';
+import { SubscriptionService } from '../../services/subscription.service';
 
 @Component({
     selector: 'app-queue',
@@ -13,14 +14,17 @@ import { QueueService } from '../../services/queue.service';
 export class QueueComponent implements OnInit {
     
     public currentTourn:ITournament;
+    public isSubscribed:boolean;
 
-    constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService) {}
+    constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService) {}
 
     ngOnInit(): void {
         this._getTourn().subscribe( (tournResponse) => {
             if (tournResponse['result']) {
                 this.currentTourn = tournResponse['result'][0];
                 console.log('current tournament:', this.currentTourn);
+                this.isSubscribed = this.currentTourn.subscribers.includes( localStorage.getItem('uid') );
+    
             }
         })
     }
@@ -35,6 +39,21 @@ export class QueueComponent implements OnInit {
         this._queue.toggleActive(this.currentTourn.name).subscribe(resp => {
             this.currentTourn.active = resp['result'];
         });
+    }
+
+    public toggleSub() {
+        if(this.isSubscribed) {
+            this._sub.delete(this.currentTourn, localStorage.getItem('uid')).pipe( take(1) ).subscribe( resp => {
+                this.currentTourn.subscribers.splice(this.currentTourn.subscribers.indexOf(localStorage.getItem('uid')), 1)
+            });
+        } else {
+            this._sub.add(this.currentTourn, localStorage.getItem('uid')).pipe( take(1) ).subscribe( resp => {
+                this.currentTourn.subscribers.push(localStorage.getItem('uid'));
+            });
+        }
+
+        this.isSubscribed = !this.isSubscribed;
+        
     }
 
 }

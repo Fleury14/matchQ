@@ -7,7 +7,10 @@
             <a routerLink="/dashboard"><li><strong>Back to dashboard</strong></li></a>
             <li class="active">Match list</li>
             <li>Invite users</li>
-            <li>Unsubscribe</li>
+            <li>Subscribed: <strong><span id="activeStatus" [ngClass]="{success: isSubscribed, danger: !isSubscribed}" class="success">{{ isSubscribed && 'Yes' || 'No' }}</span></strong></li>
+            <li>
+                <button id="activeToggle" (click)="toggleSub()">Toggle Subscribe</button>
+            </li>
             <li>Active: <strong><span id="activeStatus" [ngClass]="{success: currentTourn?.active, danger: !currentTourn?.active}" class="success">{{ currentTourn?.active && 'Yes' || 'No' }}</span></strong></li>
             <li>
                 <button id="activeToggle" (click)="toggle()">Toggle Active</button>
