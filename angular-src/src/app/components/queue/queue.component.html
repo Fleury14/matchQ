@@ -1,14 +1,14 @@
 <div class="queue-body">
     <header>
-        <h1>Cencal Standoff 2018</h1>
+        <h1>{{ currentTourn?.name }}</h1>
     </header>
     <aside>
         <ul>
-            <a href="dashboard.html"><li><strong>Back to dashboard</strong></li></a>
+            <a routerLink="/dashboard"><li><strong>Back to dashboard</strong></li></a>
             <li class="active">Match list</li>
             <li>Invite users</li>
             <li>Unsubscribe</li>
-            <li>Active: <strong><span id="activeStatus" class="success">Yes</span></strong></li>
+            <li>Active: <strong><span id="activeStatus" [ngClass]="{success: currentTourn?.active, danger: !currentTourn?.active}" class="success">{{ currentTourn?.active && 'Yes' || 'No' }}</span></strong></li>
             <li>
                 <button id="activeToggle">Toggle Active</button>
             </li>
@@ -25,7 +25,7 @@
                     <h3>Samurai <span>vs</span> Genesis_Frenzy</h3>
                 </div>
                 <div class="buttons">
-                    <i class="fas fa-check-circle finish-button"></i>
+                    <mat-icon>check_circle</mat-icon>
                     <i class="fas fa-times-circle delete-button"></i>
                 </div>
             </li>

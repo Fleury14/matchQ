@@ -8,7 +8,7 @@
     color: $danger;
 }
 
-body {
+.queue-body {
     display: grid;
     grid-template-rows: 50px 200px repeat(8, 75px);
     grid-template-columns: 200px 1fr 6fr 1fr;

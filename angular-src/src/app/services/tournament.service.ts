@@ -39,4 +39,11 @@ export class TournamentService {
         }
         return this._http.post('/tournament/search', payload);
     }
+
+    public getTournByName(name:string) {
+        const payload = {
+            name: name
+        }
+        return this._http.post('/tournament/get-name', payload)
+    }
 }

@@ -22,7 +22,7 @@ import { TournamentService } from './services/tournament.service';
 import { SubscriptionService } from './services/subscription.service';
 import { UserService } from './services/user.service';
 
-import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule } from '@angular/material';
 import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
 import { SearchModal } from './components/dashboard/search-modal/search-modal';
 
@@ -31,7 +31,7 @@ import { SearchModal } from './components/dashboard/search-modal/search-modal';
     AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
+    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, MatIconModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
   entryComponents: [ DeleteModal, SearchModal ],
   providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, {
