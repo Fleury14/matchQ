@@ -9,4 +9,5 @@ export interface ITournament {
     createdAt: Date;
     access: string[];
     matches: IMatch[];
+    _id?: string;
 }

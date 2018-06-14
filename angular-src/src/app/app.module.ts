@@ -21,6 +21,7 @@ import { TokenInterceptor } from './services/http.interceptor.service';
 import { TournamentService } from './services/tournament.service';
 import { SubscriptionService } from './services/subscription.service';
 import { UserService } from './services/user.service';
+import { QueueService } from './services/queue.service';
 
 import { MatButtonModule, MatDialogModule, MatIconModule } from '@angular/material';
 import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
@@ -34,7 +35,7 @@ import { SearchModal } from './components/dashboard/search-modal/search-modal';
     BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, MatIconModule, HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
   entryComponents: [ DeleteModal, SearchModal ],
-  providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, {
+  providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, QueueService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

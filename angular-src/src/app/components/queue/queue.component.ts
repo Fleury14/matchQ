@@ -3,6 +3,7 @@ import { TournamentService } from '../../services/tournament.service';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { ITournament } from '../../interfaces/tournament';
+import { QueueService } from '../../services/queue.service';
 
 @Component({
     selector: 'app-queue',
@@ -13,7 +14,7 @@ export class QueueComponent implements OnInit {
     
     public currentTourn:ITournament;
 
-    constructor(private _tourn: TournamentService, private _route: ActivatedRoute) {}
+    constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService) {}
 
     ngOnInit(): void {
         this._getTourn().subscribe( (tournResponse) => {
@@ -28,6 +29,12 @@ export class QueueComponent implements OnInit {
         return this._route.paramMap.pipe(
             mergeMap( paramResponse => this._tourn.getTournByName(paramResponse.get('id'))) 
         )
+    }
+
+    public toggle() {
+        this._queue.toggleActive(this.currentTourn.name).subscribe(resp => {
+            this.currentTourn.active = resp['result'];
+        });
     }
 
 }
