@@ -7,5 +7,6 @@ export interface ITournament {
     active: boolean;
     subscribers: string[];
     createdAt: Date;
+    access: string[];
     matches: IMatch[];
 }

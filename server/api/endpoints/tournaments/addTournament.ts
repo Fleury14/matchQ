@@ -27,7 +27,8 @@ export async function addTournament(req: Request, res: Response, next: NextFunct
                 active: false,
                 createdAt: new Date(),
                 subscribers: [],
-                matches: []
+                matches: [],
+                access: []
 
             });
 

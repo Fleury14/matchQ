@@ -43,6 +43,7 @@ app.use ( async (req:express.Request, res:express.Response, next:express.NextFun
     }
     try {  // This prevents any API calls without a valid token. Also stores the userID in the request for future use
         const authHeader = req.get('Authorization');
+        if (!authHeader) { throw new Error('No Authorization header present'); }
         const token = authHeader.slice(7);
         console.log('token', token);
         const decodedToken = await admin.auth().verifyIdToken(token);

@@ -4,12 +4,16 @@ import { testBodyEndpoint } from "./test-body-endpoint";
 import { addTournament } from "./endpoints/tournaments/addTournament";
 import { deleteTournament } from "./endpoints/tournaments/deleteTournament";
 import { listTournaments } from "./endpoints/tournaments/listTournaments";
-import { decodeToken } from "./endpoints/auth/decodeToken";
 import { getMyTournament } from "./endpoints/tournaments/getMyTournament";
 import { searchTournament } from "./endpoints/tournaments/searchTournament";
+
 import { addSubscription } from "./endpoints/subscriptions/addSubscription";
 import { removeSubscription } from "./endpoints/subscriptions/removeSubscription";
 import { getTournamentsBySub } from "./endpoints/subscriptions/getTournamentsBySub";
+import { decodeToken } from "./endpoints/auth/decodeToken";
+
+import { addUser } from "./endpoints/user/addUser";
+import { checkUserUid } from "./endpoints/user/checkUserUid";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -26,4 +30,7 @@ export function initAPI (app:Application) {
     app.route('/api/subscription/tourn').post(getTournamentsBySub);
 
     app.route('/api/auth/token-check').post(decodeToken);
+
+    app.route('/api/user/add').post(addUser);
+    app.route('/api/user/check').post(checkUserUid);
 }

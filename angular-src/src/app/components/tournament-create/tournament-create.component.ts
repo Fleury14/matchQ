@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TournamentService } from '../../services/tournament.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-tourn-create',
@@ -11,7 +12,7 @@ export class TournamentCreateComponent {
     public tournamentName: string;
     public submitMessage: string;
 
-    constructor(public _tourn:TournamentService) {}
+    constructor(public _tourn:TournamentService, private _router:Router) {}
 
     create() {
         if(!this.tournamentName) {
@@ -24,6 +25,12 @@ export class TournamentCreateComponent {
         this._tourn.createTournament(this.tournamentName).subscribe( (response) => {
             console.log('Response from creating tournament', response);
             this.submitMessage = response['message'];
+            if (this.submitMessage.includes('Success')) {
+                this.submitMessage.concat(', returning to dashboard...')
+            }
+            setTimeout( () => {
+                this._router.navigateByUrl('dashboard');
+            }, 2000 )
         })
     }
 }
