@@ -14,6 +14,7 @@ import { decodeToken } from "./endpoints/auth/decodeToken";
 
 import { addUser } from "./endpoints/user/addUser";
 import { checkUserUid } from "./endpoints/user/checkUserUid";
+import { getTournamentByName } from "./endpoints/tournaments/getTournByName";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -24,6 +25,7 @@ export function initAPI (app:Application) {
     app.route('/api/tournament/list').get(listTournaments);
     app.route('/api/tournament/get-mine').post(getMyTournament);
     app.route('/api/tournament/search').post(searchTournament);
+    app.route('/api/tournament/get-name').post(getTournamentByName);
 
     app.route('/api/subscription/add').post(addSubscription);
     app.route('/api/subscription/remove').post(removeSubscription);
