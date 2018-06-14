@@ -33,7 +33,6 @@ export class SubscriptionService {
         const payload = {
             uid: uid
         }
-        console.log('payload:', payload);
         return this._http.post('/subscription/tourn', payload);
     }
 }
