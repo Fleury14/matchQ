@@ -5,6 +5,7 @@ import { mergeMap, take } from 'rxjs/operators';
 import { ITournament } from '../../interfaces/tournament';
 import { QueueService } from '../../services/queue.service';
 import { SubscriptionService } from '../../services/subscription.service';
+import { NavInfoService } from '../../services/nav-info.servce';
 
 @Component({
     selector: 'app-queue',
@@ -16,7 +17,8 @@ export class QueueComponent implements OnInit {
     public currentTourn:ITournament;
     public isSubscribed:boolean;
 
-    constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService) {}
+    constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService,
+        private _navInfo: NavInfoService) {}
 
     ngOnInit(): void {
         this._getTourn().subscribe( (tournResponse) => {
@@ -38,6 +40,8 @@ export class QueueComponent implements OnInit {
     public toggle() {
         this._queue.toggleActive(this.currentTourn.name).subscribe(resp => {
             this.currentTourn.active = resp['result'];
+            // be sure to update the nav bar info when changing activity
+            this._navInfo.updateNav();
         });
     }
 
@@ -54,6 +58,10 @@ export class QueueComponent implements OnInit {
 
         this.isSubscribed = !this.isSubscribed;
         
+    }
+
+    public toggleUserSearch() {
+        document.querySelector('.user-search').classList.toggle('hide-search');
     }
 
 }
