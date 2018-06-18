@@ -21,6 +21,7 @@ import { toggleActive } from "./endpoints/queue/toggleActive";
 
 import { addInvite } from "./endpoints/invites/addInvite";
 import { acceptInvite } from "./endpoints/invites/acceptInvite";
+import { removeInvite } from "./endpoints/invites/removeInvite";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -47,4 +48,5 @@ export function initAPI (app:Application) {
 
     app.route('/api/invite/add').post(addInvite);
     app.route('/api/invite/accept').post(acceptInvite);
+    app.route('/api/invite/remove').post(removeInvite);
 }
