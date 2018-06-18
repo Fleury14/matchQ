@@ -76,6 +76,11 @@ export class QueueComponent implements OnInit {
             const searchMod = this._matDialog.open(SearchUserModal, {
                 data: { list : searchResult['result'], tourn: this.currentTourn }
             })
+
+            searchMod.afterClosed().subscribe(resp => {
+                console.log('modal closed:', resp);
+                // TODO: REFRESH TOURNEY INFO
+            })
         } );
         
     }
