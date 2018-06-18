@@ -19,6 +19,9 @@ import { searchUser } from "./endpoints/user/searchUser";
 import { getTournamentByName } from "./endpoints/tournaments/getTournByName";
 import { toggleActive } from "./endpoints/queue/toggleActive";
 
+import { addInvite } from "./endpoints/invites/addInvite";
+import { acceptInvite } from "./endpoints/invites/acceptInvite";
+
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
     app.route('/api/body-test').post(testBodyEndpoint);
@@ -41,4 +44,7 @@ export function initAPI (app:Application) {
     app.route('/api/user/search').post(searchUser);
 
     app.route('/api/queue/toggle').post(toggleActive);
+
+    app.route('/api/invite/add').post(addInvite);
+    app.route('/api/invite/accept').post(acceptInvite);
 }
