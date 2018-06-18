@@ -22,4 +22,12 @@ export class UserService {
         }
         return this._http.post('/user/check', payload);
     }
+
+    public search(search:string) {
+        const payload = {
+            search: search
+        };
+
+        return this._http.post('/user/search', payload);
+    }
 }

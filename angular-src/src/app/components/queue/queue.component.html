@@ -9,9 +9,9 @@
             <li (click)="toggleUserSearch()">Invite users</li>
             <li class="user-search hide-search" *ngIf="!allowSearch">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Search for User" value="Name">
+                    <input matInput placeholder="Search for User" value="Name" [(ngModel)]="searchVal">
                 </mat-form-field>
-                <button mat-raised-button>Search</button>
+                <button mat-raised-button (click)="userSearch()">Search</button>
             </li>
             <li>Subscribed: <strong><span id="activeStatus" [ngClass]="{success: isSubscribed, danger: !isSubscribed}" class="success">{{ isSubscribed && 'Yes' || 'No' }}</span></strong></li>
             <li>

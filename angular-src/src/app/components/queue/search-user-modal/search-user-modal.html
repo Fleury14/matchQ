@@ -1,0 +1,18 @@
+<h3 mat-dialog-title>Search Results:</h3>
+<table class="results-table" *ngIf="data?.list" mat-table [dataSource]="data?.list" >
+    <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let user">{{ user.displayName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+    <ng-container matColumnDef="subbed">
+        <th mat-header-cell *matHeaderCellDef>Subbed?</th>
+        <td mat-cell *matCellDef="let user">{{ isSubbed(user) && 'Yes' || 'No' }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+<!-- <p *ngFor="let user of data.list">{{ user?.displayName }}</p> -->

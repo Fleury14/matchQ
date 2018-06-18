@@ -6,6 +6,11 @@ import { ITournament } from '../../interfaces/tournament';
 import { QueueService } from '../../services/queue.service';
 import { SubscriptionService } from '../../services/subscription.service';
 import { NavInfoService } from '../../services/nav-info.servce';
+import { UserService } from '../../services/user.service';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
+import { SearchUserModal } from './search-user-modal/search-user-modal';
+import { IUser } from '../../interfaces/user';
+
 
 @Component({
     selector: 'app-queue',
@@ -16,9 +21,10 @@ export class QueueComponent implements OnInit {
     
     public currentTourn:ITournament;
     public isSubscribed:boolean;
+    public searchVal: string;
 
     constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService,
-        private _navInfo: NavInfoService) {}
+        private _navInfo: NavInfoService, private _user: UserService, private _matDialog: MatDialog) {}
 
     ngOnInit(): void {
         this._getTourn().subscribe( (tournResponse) => {
@@ -62,6 +68,34 @@ export class QueueComponent implements OnInit {
 
     public toggleUserSearch() {
         document.querySelector('.user-search').classList.toggle('hide-search');
+    }
+
+    public async userSearch() {
+        this._user.search(this.searchVal).pipe( take(1) ).subscribe( searchResult => {
+            console.log('user search result', searchResult);
+            const searchMod = this._matDialog.open(SearchUserModal, {
+                data: { list : searchResult['result'], tourn: this.currentTourn }
+            })
+        } );
+        
+    }
+
+    public access(uid:string):number {
+        // 0: no access 1: subbed  3: accepted 4: owner
+        if (this.currentTourn.belongsTo === uid) {
+            return 4;
+        }
+
+        if (this.currentTourn.access.includes(uid)) { return 3; }
+
+        if (this.currentTourn.subscribers.includes(uid)) { return 1; }
+
+        if (this.currentTourn.belongsTo !== uid && !this.currentTourn.access.includes(uid) && !this.currentTourn.subscribers.includes(uid)) { return 0; }
+    }
+
+    public userHasInvite(user:IUser) {
+        const result = user.invites.filter( (invite) => invite.tournId == this.currentTourn._id);
+        if (result) { return true } else { return false }
     }
 
 }

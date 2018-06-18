@@ -14,6 +14,8 @@ import { decodeToken } from "./endpoints/auth/decodeToken";
 
 import { addUser } from "./endpoints/user/addUser";
 import { checkUserUid } from "./endpoints/user/checkUserUid";
+import { searchUser } from "./endpoints/user/searchUser";
+
 import { getTournamentByName } from "./endpoints/tournaments/getTournByName";
 import { toggleActive } from "./endpoints/queue/toggleActive";
 
@@ -36,6 +38,7 @@ export function initAPI (app:Application) {
 
     app.route('/api/user/add').post(addUser);
     app.route('/api/user/check').post(checkUserUid);
+    app.route('/api/user/search').post(searchUser);
 
     app.route('/api/queue/toggle').post(toggleActive);
 }

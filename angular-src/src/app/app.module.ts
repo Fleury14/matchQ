@@ -23,20 +23,21 @@ import { SubscriptionService } from './services/subscription.service';
 import { UserService } from './services/user.service';
 import { QueueService } from './services/queue.service';
 
-import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule } from '@angular/material';
 import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
 import { SearchModal } from './components/dashboard/search-modal/search-modal';
 import { NavInfoService } from './services/nav-info.servce';
+import { SearchUserModal } from './components/queue/search-user-modal/search-user-modal';
 
 @NgModule({
   declarations: [
-    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal
+    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal, SearchUserModal
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, MatIconModule, MatInputModule,
+    BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule,
     HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
-  entryComponents: [ DeleteModal, SearchModal ],
+  entryComponents: [ DeleteModal, SearchModal, SearchUserModal ],
   providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, QueueService, NavInfoService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
