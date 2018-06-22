@@ -16,6 +16,7 @@ import { NavInfoService } from '../../services/nav-info.servce';
 export class NavComponent implements OnInit {
 
     public displayName:string;
+    public uid:string;
     public loginSub:Subscription;
     public userSub:Subscription;
     public activeStreams:number;
@@ -29,6 +30,7 @@ export class NavComponent implements OnInit {
             console.log('nav response', response);
             if(response) {
                 this.displayName = response.userName;
+                this.uid = response.uid
                 document.querySelector('.nav-bar ul').classList.remove('faded');    
             } else {
                 this.displayName = null;

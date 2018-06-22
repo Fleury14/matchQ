@@ -17,7 +17,7 @@ export async function checkUserUid(req: Request, res: Response, next: NextFuncti
 
         if (result) {
             console.log('User exists');
-            res.json({message: 'UID Exists on database', result: true});
+            res.json({message: 'UID Exists on database', result: true, user: result});
         } else {
             console.log('User does not exist on database');
             res.json({messgae: 'UID does not exists on database', result: false});

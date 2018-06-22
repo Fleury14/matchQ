@@ -25,7 +25,7 @@ export class LoginRouterGuard implements CanActivate {
                 if(authState) {
                     // console.log('checking if user is in db...', authState);
                     this._checkSub = this._user.check(authState.uid).pipe( take(1) ).subscribe( (resp) => {
-                        console.log(resp['result']);
+                        // console.log(resp['result']);
                         const answer = resp['result'];
                         if (!answer) {
                             console.log('adding user...');

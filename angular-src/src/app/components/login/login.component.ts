@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit, OnDestroy {
             // console.log('result', result);
             if( result.credential.idToken) {
                 localStorage.setItem('displayName', result.user.displayName);
-                this._login.sendInfo();
                 localStorage.setItem('email', result.user.email);
                 localStorage.setItem('uid', result.user.uid);
-                
+                this._login.sendInfo();
+
             }
             this._login.getToken().then( (token) => {
                 // console.log('token set');

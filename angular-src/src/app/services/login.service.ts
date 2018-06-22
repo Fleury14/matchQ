@@ -25,7 +25,7 @@ export class LoginService {
     }
 
     public sendInfo() {
-        this._loginState.next({userName: localStorage.getItem('displayName')})
+        this._loginState.next({userName: localStorage.getItem('displayName'), uid: localStorage.getItem('uid')})
     }
 
     public getInfo():Observable<any> {

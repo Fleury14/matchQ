@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginRouterGuard } from './services/login.guard.service';
 import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
 import { QueueComponent } from './components/queue/queue.component';
+import { InviteComponent } from './components/invites/invite.component';
 
 const routes:Route[] = [{
     path: 'dashboard',
@@ -28,6 +29,11 @@ const routes:Route[] = [{
     canActivate: [ LoginRouterGuard ]
 },
 {
+    path: 'invites/:id',
+    component: InviteComponent,
+    canActivate: [ LoginRouterGuard ]
+},
+{
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -45,4 +51,4 @@ const routes:Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent, TournamentCreateComponent, QueueComponent ]
+export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent, TournamentCreateComponent, QueueComponent, InviteComponent ]
