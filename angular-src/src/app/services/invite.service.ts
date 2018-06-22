@@ -7,18 +7,20 @@ export class InviteService {
 
     constructor(private _http:HttpService) {}
 
-    public add(uid: string, tournId: string) {
+    public add(uid: string, tournId: string, tournName: string) {
         const payload = {
             uid: uid,
-            tournId: tournId
+            tournId: tournId,
+            tournName: tournName
         }
         return this._http.post('/invite/add', payload);
     }
 
-    public accept(uid: string, tournId: string) {
+    public accept(uid: string, tournId: string, tournName: string) {
         const payload = {
             uid: uid,
-            tournId: tournId
+            tournId: tournId,
+            tournName: tournName
         }
         return this._http.post('/invite/accept', payload);
     }

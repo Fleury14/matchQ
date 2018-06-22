@@ -7,27 +7,32 @@ import { ITournament } from "../../interfaces/tournament";
 import { IUser } from "../../interfaces/user";
 
 export async function removeInvite(req: Request, res: Response, next: NextFunction) {
-    console.log('Endpoint for adding invite hit');
+    console.log('Endpoint for removing invite hit');
     try {
         // make sure data fits schema
+        console.log('try?');
         if( !req.body.tournId || !req.body.uid ) {
             console.log('Missing required fields');
             throw new TypeError('Missing fields');
         }
 
-
+        console.log('Required fields met.');
         // make sure invite exists
         const userResult:IUser = await User.findOne({uid: req.body.uid});
         if (!userResult) {
             console.log('User does not exist');
-            res.json({message: 'Cannot add invite to user because user does not exist'});
+            res.json({message: 'Cannot remove invite to user because user does not exist'});
         } else {
-           if (!userResult.invites.includes(req.body.tournId)) {
+            console.log('User exists');
+           if (!userResult.invites || userResult.invites.filter(invite => invite.tournId === req.body.tournId).length > 0) {
                res.json({message: 'There is no invite from the tournament to remove'})
            } else {
+               console.log('Removing invite..');
                User.update({uid: req.body.uid}, {
                     $pull: {
-                        invites: req.body.tournId
+                        invites: {
+                            tournId: req.body.tournId
+                        }
                     }
                }, (err, resp) => {
                    if (err) {

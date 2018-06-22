@@ -9,7 +9,7 @@ export async function addInvite(req: Request, res: Response, next: NextFunction)
     console.log('Endpoint for adding invite hit');
     try {
         // make sure data fits schema
-        if( !req.body.tournId || !req.body.uid ) {
+        if( !req.body.tournId  || !req.body.tournName || !req.body.uid ) {
             console.log('Missing required fields');
             throw new TypeError('Missing fields');
         }
@@ -28,7 +28,10 @@ export async function addInvite(req: Request, res: Response, next: NextFunction)
             } else {
                 await User.update({uid: req.body.uid}, {
                     $addToSet: {
-                        invites: req.body.tournId
+                        invites: {
+                            tournId: req.body.tournId,
+                            tournName: req.body.tournName
+                        }
                     }
                 }, (err, resp) => {
                     if (err) {

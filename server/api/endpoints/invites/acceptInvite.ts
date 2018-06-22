@@ -29,7 +29,9 @@ export async function acceptInvite(req: Request, res: Response, next: NextFuncti
                 // remove invite
                 await User.update({uid: req.body.uid}, {
                     $pull: {
-                        invites: req.body.tournId
+                        invites: {
+                            tournId: req.body.tournId
+                        }
                     }
                 }, (err, resp) => {
                     if (err) {

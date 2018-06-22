@@ -22,15 +22,19 @@ export class SearchUserModal {
         return this.data.tourn.subscribers.includes(user.uid);
     }
 
-    public access(uid:string):any {
+    public access(uid:string, invites:any[]):any {
         // 0: no access 1: subbed  3: accepted 4: owner
+        console.log('calling access', uid, invites);
         if (this.data.tourn.belongsTo === uid) {
+            console.log('returning 4');
             return {code: 4, title: 'Owner'};
         }
 
+        console.log(invites);
+
         if (this.data.tourn.access.includes(uid)) { return {code: 3, title: 'Read/Write'}; }
         // console.log('list', this.data.list);
-        if (this.data.list.invites && this.data.list.invites.includes(this.data.tourn._id)) { return {code: 2, title: 'Invited'}; }
+        if (invites && invites.filter(invite => invite.tournId === this.data.tourn._id).length > 0 ) { return {code: 2, title: 'Invited'}; }
 
         if (this.data.tourn.subscribers.includes(uid)) { return {code: 1, title: 'Subscribed'}; }
 
@@ -38,7 +42,7 @@ export class SearchUserModal {
     }
 
     public add(uid:string) {
-        this._invite.add(uid, this.data.tourn._id).subscribe(resp => {
+        this._invite.add(uid, this.data.tourn._id, this.data.tourn.name).subscribe(resp => {
             this.toast = resp['message'];
             setTimeout(this._dialogRef.close(), 1000);
         })
