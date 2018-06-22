@@ -24,13 +24,10 @@ export class SearchUserModal {
 
     public access(uid:string, invites:any[]):any {
         // 0: no access 1: subbed  3: accepted 4: owner
-        console.log('calling access', uid, invites);
         if (this.data.tourn.belongsTo === uid) {
-            console.log('returning 4');
             return {code: 4, title: 'Owner'};
         }
 
-        console.log(invites);
 
         if (this.data.tourn.access.includes(uid)) { return {code: 3, title: 'Read/Write'}; }
         // console.log('list', this.data.list);

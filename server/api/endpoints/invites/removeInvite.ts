@@ -10,13 +10,11 @@ export async function removeInvite(req: Request, res: Response, next: NextFuncti
     console.log('Endpoint for removing invite hit');
     try {
         // make sure data fits schema
-        console.log('try?');
         if( !req.body.tournId || !req.body.uid ) {
             console.log('Missing required fields');
             throw new TypeError('Missing fields');
         }
 
-        console.log('Required fields met.');
         // make sure invite exists
         const userResult:IUser = await User.findOne({uid: req.body.uid});
         if (!userResult) {
