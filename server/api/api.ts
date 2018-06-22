@@ -14,6 +14,14 @@ import { decodeToken } from "./endpoints/auth/decodeToken";
 
 import { addUser } from "./endpoints/user/addUser";
 import { checkUserUid } from "./endpoints/user/checkUserUid";
+import { searchUser } from "./endpoints/user/searchUser";
+
+import { getTournamentByName } from "./endpoints/tournaments/getTournByName";
+import { toggleActive } from "./endpoints/queue/toggleActive";
+
+import { addInvite } from "./endpoints/invites/addInvite";
+import { acceptInvite } from "./endpoints/invites/acceptInvite";
+import { removeInvite } from "./endpoints/invites/removeInvite";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -24,6 +32,7 @@ export function initAPI (app:Application) {
     app.route('/api/tournament/list').get(listTournaments);
     app.route('/api/tournament/get-mine').post(getMyTournament);
     app.route('/api/tournament/search').post(searchTournament);
+    app.route('/api/tournament/get-name').post(getTournamentByName);
 
     app.route('/api/subscription/add').post(addSubscription);
     app.route('/api/subscription/remove').post(removeSubscription);
@@ -33,4 +42,11 @@ export function initAPI (app:Application) {
 
     app.route('/api/user/add').post(addUser);
     app.route('/api/user/check').post(checkUserUid);
+    app.route('/api/user/search').post(searchUser);
+
+    app.route('/api/queue/toggle').post(toggleActive);
+
+    app.route('/api/invite/add').post(addInvite);
+    app.route('/api/invite/accept').post(acceptInvite);
+    app.route('/api/invite/remove').post(removeInvite);
 }

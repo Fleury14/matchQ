@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
 import { LoginRouterGuard } from './services/login.guard.service';
 import { TournamentCreateComponent } from './components/tournament-create/tournament-create.component';
+import { QueueComponent } from './components/queue/queue.component';
 
 const routes:Route[] = [{
     path: 'dashboard',
@@ -20,6 +21,11 @@ const routes:Route[] = [{
 {
     path: 'login',
     component: LoginComponent
+},
+{
+    path: 'queue/:id',
+    component: QueueComponent,
+    canActivate: [ LoginRouterGuard ]
 },
 {
     path: '',
@@ -39,4 +45,4 @@ const routes:Route[] = [{
 
 export class AppRoutingModule {}
 
-export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent, TournamentCreateComponent ]
+export const RoutingComponents = [LoginComponent, ErrorComponent, DashboardComponent, TournamentCreateComponent, QueueComponent ]

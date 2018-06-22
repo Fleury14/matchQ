@@ -1,0 +1,26 @@
+.results-table {
+    width: 650px;
+}
+
+.table-button {
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    font-size: 10px;
+    vertical-align: top;
+    padding: 0 0;
+    width: 40px;
+
+    /deep/ .mat-button-wrapper {
+        padding: 0;
+    }
+    
+}
+
+.table-button-span {
+    padding: 0;
+}
+
+
+
+

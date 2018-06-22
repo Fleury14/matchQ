@@ -12,7 +12,7 @@ export class SubscriptionService {
     public add(tourn: ITournament, uid: string):Observable<any> {
 
         const payload = {
-            name: tourn,
+            name: tourn.name,
             uid: uid
         }
 
@@ -21,10 +21,9 @@ export class SubscriptionService {
 
     public delete(tourn: ITournament, uid:string):Observable<any> {
         const payload = {
-            name: tourn,
+            name: tourn.name,
             uid: uid
         }
-
         return this._http.post('/subscription/remove', payload);
     }
 

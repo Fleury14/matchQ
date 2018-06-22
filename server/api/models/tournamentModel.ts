@@ -6,7 +6,7 @@ export interface ITournamentModel extends ITournament, Document {}
 export const tournamentSchema:Schema = new Schema({
     belongsTo: {type: String, required: true},
     belongsName: {type: String, required: true},
-    name: {type: String, required: true},
+    name: {type: String, required: true, unique: true},
     active: {type: Boolean, required: true},
     subscribers: {type: [String]},
     access: {type: [String]},

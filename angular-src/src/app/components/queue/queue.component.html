@@ -1,16 +1,25 @@
 <div class="queue-body">
     <header>
-        <h1>Cencal Standoff 2018</h1>
+        <h1>{{ currentTourn?.name }}</h1>
     </header>
     <aside>
         <ul>
-            <a href="dashboard.html"><li><strong>Back to dashboard</strong></li></a>
+            <a routerLink="/dashboard"><li><strong>Back to dashboard</strong></li></a>
             <li class="active">Match list</li>
-            <li>Invite users</li>
-            <li>Unsubscribe</li>
-            <li>Active: <strong><span id="activeStatus" class="success">Yes</span></strong></li>
+            <li (click)="toggleUserSearch()">Invite users</li>
+            <li class="user-search hide-search" *ngIf="!allowSearch">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Search for User" value="Name" [(ngModel)]="searchVal">
+                </mat-form-field>
+                <button mat-raised-button (click)="userSearch()">Search</button>
+            </li>
+            <li>Subscribed: <strong><span id="activeStatus" [ngClass]="{success: isSubscribed, danger: !isSubscribed}" class="success">{{ isSubscribed && 'Yes' || 'No' }}</span></strong></li>
             <li>
-                <button id="activeToggle">Toggle Active</button>
+                <button id="activeToggle" (click)="toggleSub()">Toggle Subscribe</button>
+            </li>
+            <li>Active: <strong><span id="activeStatus" [ngClass]="{success: currentTourn?.active, danger: !currentTourn?.active}" class="success">{{ currentTourn?.active && 'Yes' || 'No' }}</span></strong></li>
+            <li>
+                <button id="activeToggle" (click)="toggle()">Toggle Active</button>
             </li>
             <a href="finished-matches.html"><li>Finished Matches</li></a>
         </ul>
@@ -25,7 +34,7 @@
                     <h3>Samurai <span>vs</span> Genesis_Frenzy</h3>
                 </div>
                 <div class="buttons">
-                    <i class="fas fa-check-circle finish-button"></i>
+                    <mat-icon>check_circle</mat-icon>
                     <i class="fas fa-times-circle delete-button"></i>
                 </div>
             </li>

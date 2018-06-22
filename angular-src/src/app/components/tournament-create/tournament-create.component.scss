@@ -2,7 +2,7 @@
 
 .create-queue-body {
     display: grid;
-    grid-template-rows: 50px 200px 230px 75px;
+    grid-template-rows: 50px 100px 230px 75px;
     grid-template-columns: 1fr 6fr 1fr;
     grid-row-gap: 10px;
     background: linear-gradient(darken($navy-blue, 10), $navy-blue);
