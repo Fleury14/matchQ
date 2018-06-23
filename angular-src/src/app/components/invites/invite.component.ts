@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service';
 
 export class InviteComponent implements OnInit {
    
-    private user: IUser;
+    public user: IUser;
     public invalidParam:boolean = false;
 
     constructor (private _route: ActivatedRoute, private _user: UserService) {}

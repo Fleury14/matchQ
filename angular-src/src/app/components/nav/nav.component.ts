@@ -7,6 +7,7 @@ import { map, tap } from 'rxjs/operators';
 import { ITournament } from '../../interfaces/tournament';
 import * as firebase from 'firebase';
 import { NavInfoService } from '../../services/nav-info.servce';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-nav',
@@ -21,8 +22,9 @@ export class NavComponent implements OnInit {
     public userSub:Subscription;
     public activeStreams:number;
     public activeStreamsSub:Subscription;
+    public invites: number;
 
-    constructor (private _login: LoginService, private _router: Router, private _tourn: TournamentService, private _navInfo: NavInfoService) {}
+    constructor (private _login: LoginService, private _router: Router, private _tourn: TournamentService, private _navInfo: NavInfoService, private _user:UserService) {}
 
     ngOnInit(): void {
         // console.log('nav on init');
@@ -44,6 +46,7 @@ export class NavComponent implements OnInit {
        this._navInfo.subscribeToNavInfo().subscribe(response => {
         //    console.log('from subject: ', response.data);
            this.getActiveStreams();
+           this.getInvites();
        })
 
     }
@@ -57,6 +60,13 @@ export class NavComponent implements OnInit {
             tap( (filteredList:ITournament[]) => {
                 this.activeStreams = filteredList.length;
             })
+        ).subscribe();
+    }
+
+    public getInvites() {
+        this._user.invites(localStorage.getItem('uid')).pipe(
+            map(invites => invites.length ? invites.length : 0),
+            tap(numOfInvites => this.invites = numOfInvites)
         ).subscribe();
     }
 

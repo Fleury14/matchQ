@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 
@@ -29,5 +30,20 @@ export class UserService {
         };
 
         return this._http.post('/user/search', payload);
+    }
+
+    public invites(uid:string) {
+        const payload = {
+            uid: uid
+        }
+        return this._http.post('/user/check', payload).pipe(
+            map(response => {
+                if(!response['user']) {
+                    return null;
+                } else {
+                    return response['user'].invites;
+                }
+            })
+        )
     }
 }

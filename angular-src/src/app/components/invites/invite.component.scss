@@ -1,0 +1,40 @@
+@import './../../../scss-imports/vars';
+
+.invites-body {
+    color: #ddd;
+
+    h1 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.return-button {
+    margin-left: 50%;
+    margin-top: 50px;
+    transform: translateX(-50%);
+}
+
+.invite-card {
+    width: 50%;
+    background-color: $white;
+    color: $navy-blue;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 60px lighten($navy-blue, 30);
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+}
