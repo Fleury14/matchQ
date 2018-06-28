@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { SearchUserModal } from './search-user-modal/search-user-modal';
 import { IUser } from '../../interfaces/user';
+import { UserAccessModal } from './user-access-modal/user-access-modal';
 
 
 @Component({
@@ -101,6 +102,12 @@ export class QueueComponent implements OnInit {
     public userHasInvite(user:IUser) {
         const result = user.invites.filter( (invite) => invite.tournId == this.currentTourn._id);
         if (result) { return true } else { return false }
+    }
+
+    public userAccessList() {
+        const accessList = this._matDialog.open(UserAccessModal, {
+            data: this.currentTourn,
+        })
     }
 
 }

@@ -29,16 +29,17 @@ import { DeleteModal } from './components/dashboard/delete-modal/delete-modal';
 import { SearchModal } from './components/dashboard/search-modal/search-modal';
 import { NavInfoService } from './services/nav-info.servce';
 import { SearchUserModal } from './components/queue/search-user-modal/search-user-modal';
+import { UserAccessModal } from './components/queue/user-access-modal/user-access-modal';
 
 @NgModule({
   declarations: [
-    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal, SearchUserModal
+    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal, SearchUserModal, UserAccessModal
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule,
     HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
-  entryComponents: [ DeleteModal, SearchModal, SearchUserModal ],
+  entryComponents: [ DeleteModal, SearchModal, SearchUserModal, UserAccessModal ],
   providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, QueueService, InviteService, NavInfoService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

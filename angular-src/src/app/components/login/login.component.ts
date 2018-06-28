@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public login() {
         this._login.login().then( (result) => {
             // console.log('result', result);
-            if( result.credential.idToken) {
+            if( result.credential['idToken']) {
                 localStorage.setItem('displayName', result.user.displayName);
                 localStorage.setItem('email', result.user.email);
                 localStorage.setItem('uid', result.user.uid);
