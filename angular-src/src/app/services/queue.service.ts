@@ -15,4 +15,11 @@ export class QueueService {
         return this._http.post('/queue/toggle', payload);
     }
 
+    public removeAccess(uid:string, tournId:string) {
+        const payload = {
+            uid: uid,
+            tournId: tournId
+        }
+        return this._http.post('/queue/remove-access', payload);
+    }
 }
