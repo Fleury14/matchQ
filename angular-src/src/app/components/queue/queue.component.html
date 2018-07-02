@@ -6,6 +6,7 @@
         <ul>
             <a routerLink="/dashboard"><li><strong>Back to dashboard</strong></li></a>
             <li class="active">Match list</li>
+            <li>Current Access: {{ currentAccessString() }}</li>
             <li (click)="toggleUserSearch()">Invite users</li>
             <li class="user-search hide-search" *ngIf="!allowSearch">
                 <mat-form-field class="example-full-width">

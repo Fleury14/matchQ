@@ -10,7 +10,7 @@
     </ng-container>
     <ng-container matColumnDef="access">
         <th mat-header-cell *matHeaderCellDef>Access</th>
-        <td mat-cell *matCellDef="let user"><button mat-fab color="warn">Remove</button></td>
+        <td mat-cell *matCellDef="let user"><button mat-fab color="warn" (click)="remove(user.uid)">Remove</button></td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>

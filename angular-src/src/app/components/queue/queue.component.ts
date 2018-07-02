@@ -11,6 +11,7 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { SearchUserModal } from './search-user-modal/search-user-modal';
 import { IUser } from '../../interfaces/user';
 import { UserAccessModal } from './user-access-modal/user-access-modal';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,12 +24,21 @@ export class QueueComponent implements OnInit {
     public currentTourn:ITournament;
     public isSubscribed:boolean;
     public searchVal: string;
+    private _tournSub: Subscription;
 
     constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService,
         private _navInfo: NavInfoService, private _user: UserService, private _matDialog: MatDialog) {}
 
     ngOnInit(): void {
-        this._getTourn().subscribe( (tournResponse) => {
+        this._refreshTournInfo();
+    }
+
+    private _refreshTournInfo() {
+        if(this._tournSub) {
+            this._tournSub.unsubscribe()
+        }
+
+        this._tournSub = this._getTourn().subscribe( (tournResponse) => {
             if (tournResponse['result']) {
                 this.currentTourn = tournResponse['result'][0];
                 console.log('current tournament:', this.currentTourn);
@@ -99,6 +109,22 @@ export class QueueComponent implements OnInit {
         if (this.currentTourn.belongsTo !== uid && !this.currentTourn.access.includes(uid) && !this.currentTourn.subscribers.includes(uid)) { return 0; }
     }
 
+    public currentAccessString() {
+        if (!this.currentTourn) {
+            return '';
+        }
+        switch (this.access(localStorage.getItem('uid'))) {
+            case 4:
+                return 'Owner';
+            case 3:
+                return 'Read/Write';
+            case 1:
+                return 'Subscribed';
+            default:
+                return 'Read Only';
+        }
+    }
+
     public userHasInvite(user:IUser) {
         const result = user.invites.filter( (invite) => invite.tournId == this.currentTourn._id);
         if (result) { return true } else { return false }
@@ -107,6 +133,8 @@ export class QueueComponent implements OnInit {
     public userAccessList() {
         const accessList = this._matDialog.open(UserAccessModal, {
             data: this.currentTourn,
+        }).afterClosed().pipe( take(1) ).subscribe( resp => {
+            this._refreshTournInfo();
         })
     }
 
