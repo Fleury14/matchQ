@@ -4,6 +4,7 @@ import { IUser } from '../../interfaces/user';
 import { map, switchMap, take } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 import { InviteService } from '../../services/invite.service';
+import { NavInfoService } from '../../services/nav-info.servce';
 
 @Component({
     selector: 'app-invites',
@@ -16,7 +17,7 @@ export class InviteComponent implements OnInit {
     public user: IUser;
     public invalidParam:boolean = false;
 
-    constructor (private _route: ActivatedRoute, private _user: UserService, private _invite: InviteService) {}
+    constructor (private _route: ActivatedRoute, private _user: UserService, private _invite: InviteService, private _navInfo: NavInfoService) {}
 
     ngOnInit(): void {
         this._route.paramMap.pipe(
@@ -42,6 +43,7 @@ export class InviteComponent implements OnInit {
         this._invite.accept(this.user.uid, tournId, tournName).pipe( take(1) ).subscribe( response => {
             console.log('response from server,', response);
             this.user.invites = this.user.invites.filter(invite => invite.tournId !== tournId);
+            this._navInfo.updateNav();
         })
     }
 
@@ -50,6 +52,7 @@ export class InviteComponent implements OnInit {
         this._invite.remove(this.user.uid, tournId).pipe( take(1) ).subscribe( response => {
             console.log('response from server:', response);
             this.user.invites = this.user.invites.filter(invite => invite.tournId !== tournId);
+            this._navInfo.updateNav();
         } )
     }
 }
