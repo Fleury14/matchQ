@@ -3,9 +3,9 @@ export interface IUser {
     email: string;
     subscriptions: string[];
     uid: string;
-    invites: [{
+    invites: {
         tournId: string,
         tournName: string
-    }];
+    }[];
     _id?: string
 }

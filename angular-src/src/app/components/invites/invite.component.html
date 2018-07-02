@@ -1,0 +1,12 @@
+<div class="invites-body">
+    <h1>Invites</h1>
+    <h2 *ngIf="user?.invites.length < 1">You do not currently have any invites</h2>
+    <div class="invite-card" *ngFor="let invite of user?.invites">
+        <h2>{{ invite.tournName }}</h2>
+        <div class="button-row">
+            <button mat-raised-button color="primary" (click)="accept(invite.tournId)">Accept</button>
+            <button mat-raised-button color="warn" (click)="decline(invite.tournId)">Decline</button>
+        </div>
+    </div>
+    <button mat-raised-button class="return-button" color="accent" routerLink="../../dashboard">Back to Dashboard</button>
+</div>

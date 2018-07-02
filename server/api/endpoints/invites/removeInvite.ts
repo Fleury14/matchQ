@@ -22,7 +22,9 @@ export async function removeInvite(req: Request, res: Response, next: NextFuncti
             res.json({message: 'Cannot remove invite to user because user does not exist'});
         } else {
             console.log('User exists');
-           if (!userResult.invites || userResult.invites.filter(invite => invite.tournId === req.body.tournId).length > 0) {
+            console.log('Invites:', userResult.invites);
+            console.log('Filter Result', )
+           if (!userResult.invites || userResult.invites.filter(invite => invite.tournId === req.body.tournId).length < 1) {
                res.json({message: 'There is no invite from the tournament to remove'})
            } else {
                console.log('Removing invite..');
