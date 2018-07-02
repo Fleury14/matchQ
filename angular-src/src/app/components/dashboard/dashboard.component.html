@@ -18,7 +18,7 @@
     <div class="queue-subscribed">
         <h3>Queues you're subscribed to</h3>
         <!-- Begin right card list -->
-        <div *ngFor="let tourn of subbedTournaments" class="card subscribed-card card0">
+        <div *ngFor="let tourn of subbedTournaments" class="card subscribed-card card0" routerLink='/queue/{{ tourn.name }}'>
             <p>{{ tourn.name }}</p>
             <div class="info-row">
                 <span>Active: <strong><i class="success-text">{{ tourn.active && 'Yes' || 'No' }}</i></strong></span>

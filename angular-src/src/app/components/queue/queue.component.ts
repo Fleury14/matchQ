@@ -79,6 +79,7 @@ export class QueueComponent implements OnInit {
 
     public toggleUserSearch() {
         document.querySelector('.user-search').classList.toggle('hide-search');
+        document.querySelector('.search-button').classList.toggle('hide-search-button');
     }
 
     public async userSearch() {

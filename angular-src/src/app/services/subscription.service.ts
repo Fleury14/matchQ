@@ -15,7 +15,6 @@ export class SubscriptionService {
             name: tourn.name,
             uid: uid
         }
-
         return this._http.post('/subscription/add', payload);
     }
 
