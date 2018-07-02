@@ -15,6 +15,7 @@ export class SubscriptionService {
             name: tourn.name,
             uid: uid
         }
+        console.log('adding', payload);
 
         return this._http.post('/subscription/add', payload);
     }
@@ -24,6 +25,8 @@ export class SubscriptionService {
             name: tourn.name,
             uid: uid
         }
+        console.log('deleting', payload);
+
         return this._http.post('/subscription/remove', payload);
     }
 

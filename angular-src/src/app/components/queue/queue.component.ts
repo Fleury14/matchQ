@@ -63,11 +63,14 @@ export class QueueComponent implements OnInit {
     }
 
     public toggleSub() {
+        console.log('toggling sub..');
         if(this.isSubscribed) {
+            console.log('deleting from component');
             this._sub.delete(this.currentTourn, localStorage.getItem('uid')).pipe( take(1) ).subscribe( resp => {
                 this.currentTourn.subscribers.splice(this.currentTourn.subscribers.indexOf(localStorage.getItem('uid')), 1)
             });
         } else {
+            console.log('adding from component');
             this._sub.add(this.currentTourn, localStorage.getItem('uid')).pipe( take(1) ).subscribe( resp => {
                 this.currentTourn.subscribers.push(localStorage.getItem('uid'));
             });
@@ -79,6 +82,7 @@ export class QueueComponent implements OnInit {
 
     public toggleUserSearch() {
         document.querySelector('.user-search').classList.toggle('hide-search');
+        document.querySelector('.search-button').classList.toggle('hide-search-button');
     }
 
     public async userSearch() {
