@@ -31,16 +31,17 @@ import { NavInfoService } from './services/nav-info.servce';
 import { SearchUserModal } from './components/queue/search-user-modal/search-user-modal';
 import { UserAccessModal } from './components/queue/user-access-modal/user-access-modal';
 import { QueueSnackBarComponent } from './components/queue/queue-snack-bar/queue-snack-bar';
+import { AddMatchModal } from './components/queue/add-match-modal/add-match-modal';
 
 @NgModule({
   declarations: [
-    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal, SearchUserModal, UserAccessModal, QueueSnackBarComponent
+    AppComponent, RoutingComponents, NavComponent, DeleteModal, SearchModal, SearchUserModal, UserAccessModal, QueueSnackBarComponent, AddMatchModal
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSnackBarModule, MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule,
     HttpClientModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AppRoutingModule
   ],
-  entryComponents: [ DeleteModal, SearchModal, SearchUserModal, UserAccessModal, QueueSnackBarComponent ],
+  entryComponents: [ DeleteModal, SearchModal, SearchUserModal, UserAccessModal, QueueSnackBarComponent, AddMatchModal ],
   providers: [ LoginService, HttpService, TournamentService, SubscriptionService, UserService, QueueService, InviteService, NavInfoService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

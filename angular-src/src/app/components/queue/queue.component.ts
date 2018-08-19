@@ -9,6 +9,7 @@ import { NavInfoService } from '../../services/nav-info.servce';
 import { UserService } from '../../services/user.service';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
 import { SearchUserModal } from './search-user-modal/search-user-modal';
+import { AddMatchModal } from './add-match-modal/add-match-modal';
 import { IUser } from '../../interfaces/user';
 import { UserAccessModal } from './user-access-modal/user-access-modal';
 import { Subscription } from 'rxjs';
@@ -137,6 +138,10 @@ export class QueueComponent implements OnInit {
         }).afterClosed().pipe( take(1) ).subscribe( resp => {
             this._refreshTournInfo();
         })
+    }
+
+    public addMatch() {
+        this._matDialog.open(AddMatchModal, {data: null})
     }
 
 }

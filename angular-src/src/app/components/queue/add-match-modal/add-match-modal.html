@@ -1,0 +1,11 @@
+<form action="" id="addMatchForm">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Player 1 name" value="Name" name="player1Name" [(ngModel)]="player1Name">
+    </mat-form-field>
+    <span class="versus">vs.</span>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Player2 name" value="Name" name="player2Name" [(ngModel)]="player2Name">
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>
