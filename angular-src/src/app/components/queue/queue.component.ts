@@ -150,7 +150,11 @@ export class QueueComponent implements OnInit {
     }
 
     public addMatch() {
-        this._matDialog.open(AddMatchModal, {data: null})
+        this._matDialog.open(AddMatchModal, {data: {
+            order: this.currentTourn.matches.length + 1,
+            tournId: this.currentTourn._id,
+            uid: localStorage.getItem('uid')
+        }});
     }
 
 }

@@ -37,6 +37,6 @@ export class QueueService {
             tournId: tournId,
             uid: uid
         };
-        return this._http.post('match/add', payload);
+        return this._http.post('/match/add', payload);
     }
 }
