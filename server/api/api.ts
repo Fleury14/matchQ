@@ -23,6 +23,7 @@ import { addInvite } from "./endpoints/invites/addInvite";
 import { acceptInvite } from "./endpoints/invites/acceptInvite";
 import { removeInvite } from "./endpoints/invites/removeInvite";
 import { removeAccess } from "./endpoints/queue/removeAccess";
+import { addMatch } from "./endpoints/matches/addMatch";
 
 export function initAPI (app:Application) {
     app.route('/api/test').get(testEndpoint);
@@ -51,4 +52,6 @@ export function initAPI (app:Application) {
     app.route('/api/invite/add').post(addInvite);
     app.route('/api/invite/accept').post(acceptInvite);
     app.route('/api/invite/remove').post(removeInvite);
+
+    app.route('/apit/match/add').post(addMatch);
 }

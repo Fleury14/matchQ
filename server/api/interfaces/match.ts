@@ -3,4 +3,5 @@ export interface IMatch {
     player2: string;
     order: number;
     finished: boolean;
+    finished_at: Date;
 }
