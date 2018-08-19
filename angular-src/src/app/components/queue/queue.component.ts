@@ -60,6 +60,13 @@ export class QueueComponent implements OnInit {
         })
     }
 
+    public finishMatch(order:number) {
+        let targetIndex = this.matchList.findIndex( (match:IMatch) => match.order === order );
+        this.unfinishedMatches[targetIndex].finished_at = new Date();
+        this.unfinishedMatches[targetIndex].finished = true;
+        // this._sortMatches();
+    }
+
     private _refreshTournInfo() {
         if(this._tournSub) {
             this._tournSub.unsubscribe()
@@ -169,7 +176,7 @@ export class QueueComponent implements OnInit {
 
     public addMatch() {
         this._matDialog.open(AddMatchModal, {data: {
-            order: this.currentTourn.matches.length + 1,
+            order: this.unfinishedMatches.length + 1,
             tournId: this.currentTourn._id,
             uid: localStorage.getItem('uid')
         }});
