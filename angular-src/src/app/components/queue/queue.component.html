@@ -28,7 +28,7 @@
     </aside>
     <main>
         <ul id="sortable">
-            <ng-container *ngFor="let match of matchList">
+            <ng-container *ngFor="let match of unfinishedMatches">
                 <li *ngIf="match.finished === false" class="queue-card" draggable="true" id="card0" ondrop="drop(event)">
                     <div class="status">
                         <p class="status-text"><strong># {{ match.order }}</strong></p>

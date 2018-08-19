@@ -28,6 +28,8 @@ export class QueueComponent implements OnInit {
     public searchVal: string;
     private _tournSub: Subscription;
     public matchList: IMatch[];
+    public unfinishedMatches: IMatch[];
+    public finishedMatches: IMatch[];
 
     constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService,
         private _navInfo: NavInfoService, private _user: UserService, private _matDialog: MatDialog) {}
@@ -40,6 +42,21 @@ export class QueueComponent implements OnInit {
         this._queue.getMatches(this.currentTourn._id).subscribe(resp => {
             console.log('List of matches:', resp);
             this.matchList = resp['result'];
+            this._sortMatches(this.matchList);
+        })
+    }
+
+    private _sortMatches(matches: IMatch[]) {
+        this.finishedMatches = matches.filter( match => match.finished === true);
+        this.unfinishedMatches = matches.filter( match => match.finished === false);
+        this.finishedMatches.sort( (a:IMatch, b:IMatch) => {
+            const aUnix:number = a.finished_at.getTime();
+            const bUnix:number = b.finished_at.getTime();
+            return bUnix - aUnix;
+        });
+        this.unfinishedMatches.sort( (a:IMatch, b:IMatch) => a.order - b.order);
+        this.unfinishedMatches.forEach( (match:IMatch, index) => {
+            match.order = index + 1;
         })
     }
 
