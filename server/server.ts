@@ -45,15 +45,15 @@ app.use ( async (req:express.Request, res:express.Response, next:express.NextFun
         const authHeader = req.get('Authorization');
         if (!authHeader) { throw new Error('No Authorization header present'); }
         const token = authHeader.slice(7);
-        console.log('token', token);
+        // console.log('token', token);
         const decodedToken = await admin.auth().verifyIdToken(token);
         // console.log('decoded token', decodedToken);
-        console.log(`expiration date: ${decodedToken.exp} vs ${Math.floor(Date.now() / 1000)}`)
+        // console.log(`expiration date: ${decodedToken.exp} vs ${Math.floor(Date.now() / 1000)}`)
         if (decodedToken.exp < Math.floor(Date.now() / 1000)) {
             console.log('Token expired');
             throw new Error ('Token Expired');
         } else {
-            console.log('Token not expired');
+            // console.log('Token not expired');
         }
         req['user'] = decodedToken.uid;
         next();
