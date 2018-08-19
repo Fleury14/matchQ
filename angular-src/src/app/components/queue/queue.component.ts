@@ -13,6 +13,7 @@ import { AddMatchModal } from './add-match-modal/add-match-modal';
 import { IUser } from '../../interfaces/user';
 import { UserAccessModal } from './user-access-modal/user-access-modal';
 import { Subscription } from 'rxjs';
+import { IMatch } from '../../interfaces/match';
 
 
 @Component({
@@ -26,12 +27,19 @@ export class QueueComponent implements OnInit {
     public isSubscribed:boolean;
     public searchVal: string;
     private _tournSub: Subscription;
+    public matchList: IMatch[];
 
     constructor(private _tourn: TournamentService, private _route: ActivatedRoute, private _queue: QueueService, private _sub: SubscriptionService,
         private _navInfo: NavInfoService, private _user: UserService, private _matDialog: MatDialog) {}
 
     ngOnInit(): void {
         this._refreshTournInfo();
+    }
+
+    private _getMatches(): void {
+        this._queue.getMatches(this.currentTourn._id).subscribe(resp => {
+            console.log('List of matches:', resp);
+        })
     }
 
     private _refreshTournInfo() {
@@ -44,7 +52,8 @@ export class QueueComponent implements OnInit {
                 this.currentTourn = tournResponse['result'][0];
                 console.log('current tournament:', this.currentTourn);
                 this.isSubscribed = this.currentTourn.subscribers.includes( localStorage.getItem('uid') );
-    
+                // TODO FLATTEN OUT SUBSCRIBE
+                this._getMatches();
             }
         })
     }
