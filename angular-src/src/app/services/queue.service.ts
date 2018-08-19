@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { IMatch } from '../interfaces/match';
 
 
 @Injectable()
@@ -21,5 +22,21 @@ export class QueueService {
             tournId: tournId
         }
         return this._http.post('/queue/remove-access', payload);
+    }
+
+    public getMatches(tournId: string) {
+        const payload = {
+            tournId: tournId
+        };
+        return this._http.post('/match/list', payload);
+    }
+
+    public addMatch(tournId: string, uid: string, match: IMatch) {
+        const payload = {
+            match: match,
+            tournId: tournId,
+            uid: uid
+        };
+        return this._http.post('match/add', payload);
     }
 }
