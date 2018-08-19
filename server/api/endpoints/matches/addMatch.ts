@@ -24,9 +24,7 @@ export async function addMatch(req: Request, res: Response, next: NextFunction) 
             
             await Tournament.update({_id: req.body.tournId}, {
                 $addToSet: {
-                    invites: {
-                        matches: req.body.match,
-                    }
+                    matches: req.body.match
                 }
             }, (err, resp) => {
                 if (err) {
