@@ -39,6 +39,7 @@ export class QueueComponent implements OnInit {
     private _getMatches(): void {
         this._queue.getMatches(this.currentTourn._id).subscribe(resp => {
             console.log('List of matches:', resp);
+            this.matchList = resp['result'];
         })
     }
 
